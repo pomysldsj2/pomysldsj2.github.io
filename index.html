@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomysł Poznań - Baza Wyników</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dsj-yellow: #dfd445;
+      --dsj-yellow-dim: #9e952e;
+      --dsj-yellow-bright: #ffeb3b;
+      --dsj-cyan: #5cfbfb;
+      --dsj-white: #ffffff;
+      --dsj-bg-dark: #07090c;
+      --dsj-panel: rgba(14, 18, 24, 0.94);
+      --dsj-panel-border: #dfd445;
+      --dsj-border-dim: #44421b;
+      --dsj-card-bg: rgba(20, 26, 34, 0.88);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--dsj-bg-dark);
+      background-image: 
+        radial-gradient(circle at top center, rgba(16, 22, 28, 0.85) 0%, rgba(5, 7, 10, 0.98) 100%),
+        url('dsj_hills_bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      color: var(--dsj-yellow);
+      font-family: 'Press Start 2P', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    .site-container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(12px, 2vw, 24px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+
+    /* Top Header & Branding */
+    header.site-header {
+      background: var(--dsj-panel);
+      border: 3px solid var(--dsj-panel-border);
+      box-shadow: 0 0 20px rgba(223, 212, 69, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.8);
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      backdrop-filter: blur(4px);
+    }
+
+    .header-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 2px solid var(--dsj-border-dim);
+      gap: 12px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--dsj-yellow);
+    }
+
+    .brand-badge {
+      background: var(--dsj-yellow);
+      color: #000;
+      font-size: clamp(10px, 1.2vw, 13px);
+      padding: 6px 8px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .brand-title {
+      font-size: clamp(12px, 1.7vw, 20px);
+      text-shadow: 2px 2px 0 #000;
+      letter-spacing: 0.5px;
+    }
+
+    .header-quick-info {
+      font-size: clamp(7.5px, 0.9vw, 10px);
+      color: var(--dsj-cyan);
+    }
+
+    /* Horizontal Menu Line */
+    nav.site-nav {
+      display: flex;
+      background: rgba(8, 11, 15, 0.95);
+      position: relative;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px clamp(12px, 2vw, 24px);
+      color: var(--dsj-yellow);
+      text-decoration: none;
+      font-size: clamp(9px, 1.1vw, 13px);
+      letter-spacing: 0.5px;
+      border-right: 2px solid var(--dsj-border-dim);
+      background: transparent;
+      cursor: pointer;
+      border-top: none;
+      border-bottom: none;
+      border-left: none;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-item.active .nav-link {
+      background: rgba(223, 212, 69, 0.18);
+      color: var(--dsj-white);
+      outline: none;
+    }
+
+    .nav-arrow {
+      font-size: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    /* Dropdown for Wyniki (Sezony 2019-2026) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: #090c10;
+      border: 2px solid var(--dsj-panel-border);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+      list-style: none;
+      padding: 6px 0;
+      z-index: 200;
+    }
+
+    .nav-item:hover .dropdown-menu,
+    .nav-item:focus-within .dropdown-menu {
+      display: block;
+    }
+
+    .nav-item:hover .nav-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-item a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      color: var(--dsj-yellow);
+      text-decoration: none;
+      font-size: clamp(8px, 0.95vw, 11px);
+      transition: all 0.1s ease;
+    }
+
+    .dropdown-item a:hover,
+    .dropdown-item a:focus {
+      background: var(--dsj-yellow);
+      color: #000;
+      outline: none;
+    }
+
+    .dropdown-badge {
+      font-size: 7px;
+      opacity: 0.8;
+    }
+
+    /* Hero Banner with Authentic Pixel Hill Background */
+    .hero-banner {
+      position: relative;
+      border: 3px solid var(--dsj-panel-border);
+      background-image: 
+        linear-gradient(rgba(8, 11, 14, 0.25), rgba(8, 11, 14, 0.55)),
+        url('dsj_hills_bg.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      image-rendering: pixelated;
+      padding: clamp(24px, 5vw, 56px) clamp(16px, 3.5vw, 36px);
+      box-shadow: 0 0 20px rgba(223, 212, 69, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.12) 0px,
+        rgba(0, 0, 0, 0.12) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: clamp(8px, 1vw, 11px);
+      color: var(--dsj-cyan);
+      text-shadow: 1px 1px 0 #000;
+      z-index: 1;
+    }
+
+    .hero-headline {
+      font-size: clamp(16px, 3vw, 32px);
+      color: var(--dsj-white);
+      text-shadow: 3px 3px 0 #000;
+      line-height: 1.35;
+      max-width: 800px;
+      z-index: 1;
+    }
+
+    .hero-headline span {
+      color: var(--dsj-yellow-bright);
+    }
+
+    .hero-stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    .stat-pill {
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid var(--dsj-yellow);
+      padding: 8px 14px;
+      font-size: clamp(8px, 1vw, 11px);
+      display: flex;
+      gap: 8px;
+    }
+
+    .stat-val {
+      color: var(--dsj-cyan);
+    }
+
+    /* Content Area */
+    main.content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .tab-section {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tab-section.active {
+      display: flex;
+    }
+
+    .section-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 2px solid var(--dsj-panel-border);
+      padding-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(12px, 1.8vw, 18px);
+      color: var(--dsj-yellow);
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    /* Grid for News (Wiadomości) */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .news-card {
+      background: var(--dsj-card-bg);
+      border: 2px solid var(--dsj-border-dim);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .news-card:hover {
+      border-color: var(--dsj-yellow);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 14px rgba(223, 212, 69, 0.15);
+    }
+
+    .news-meta {
+      font-size: clamp(7px, 0.85vw, 9.5px);
+      color: var(--dsj-cyan);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .news-heading {
+      font-size: clamp(10px, 1.25vw, 14px);
+      color: var(--dsj-white);
+      line-height: 1.4;
+    }
+
+    .news-snippet {
+      font-size: clamp(8px, 1vw, 11px);
+      color: var(--dsj-yellow-dim);
+      line-height: 1.6;
+    }
+
+    /* Results Database (Wyniki) */
+    .results-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--dsj-panel);
+      border: 2px solid var(--dsj-border-dim);
+      padding: 12px 16px;
+    }
+
+    .season-filter-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-label {
+      font-size: clamp(8px, 1vw, 11px);
+      color: var(--dsj-yellow-dim);
+      margin-right: 4px;
+    }
+
+    .season-btn {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--dsj-border-dim);
+      color: var(--dsj-yellow);
+      font-family: inherit;
+      font-size: clamp(7.5px, 0.9vw, 10.5px);
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: all 0.1s ease;
+    }
+
+    .season-btn:hover, .season-btn.active {
+      border-color: var(--dsj-yellow);
+      background: var(--dsj-yellow);
+      color: #000;
+    }
+
+    .search-input {
+      background: #000;
+      border: 1px solid var(--dsj-border-dim);
+      color: var(--dsj-white);
+      font-family: inherit;
+      font-size: clamp(7.5px, 0.9vw, 10.5px);
+      padding: 8px 12px;
+      width: clamp(180px, 20vw, 260px);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--dsj-yellow);
+    }
+
+    .scoreboard-table-wrap {
+      background: var(--dsj-panel);
+      border: 3px solid var(--dsj-panel-border);
+      overflow-x: auto;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    }
+
+    .retro-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: clamp(8px, 1.1vw, 12px);
+      min-width: 620px;
+    }
+
+    .retro-table th {
+      background: rgba(223, 212, 69, 0.15);
+      color: var(--dsj-yellow);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--dsj-panel-border);
+      letter-spacing: 0.5px;
+    }
+
+    .retro-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(223, 212, 69, 0.1);
+      color: var(--dsj-yellow);
+      white-space: nowrap;
+    }
+
+    .retro-table tr:hover td {
+      background: rgba(223, 212, 69, 0.08);
+    }
+
+    .retro-table tr.highlight td {
+      color: var(--dsj-cyan);
+      background: rgba(92, 251, 251, 0.08);
+      text-shadow: 0 0 6px rgba(92, 251, 251, 0.4);
+    }
+
+    /* Trivia (Ciekawostki) */
+    .trivia-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .trivia-item {
+      background: var(--dsj-card-bg);
+      border-left: 4px solid var(--dsj-yellow);
+      border-top: 1px solid var(--dsj-border-dim);
+      border-right: 1px solid var(--dsj-border-dim);
+      border-bottom: 1px solid var(--dsj-border-dim);
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trivia-title {
+      font-size: clamp(10px, 1.2vw, 14px);
+      color: var(--dsj-white);
+    }
+
+    .trivia-desc {
+      font-size: clamp(8px, 1vw, 11px);
+      color: var(--dsj-yellow-dim);
+      line-height: 1.7;
+    }
+
+    /* Site Footer */
+    footer.site-footer {
+      margin-top: 20px;
+      background: var(--dsj-panel);
+      border: 3px solid var(--dsj-panel-border);
+      padding: 18px 20px;
+      text-align: center;
+      font-size: clamp(8.5px, 1.1vw, 12px);
+      color: var(--dsj-yellow);
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-container">
+    <!-- Main Full-Width Header -->
+    <header class="site-header">
+      <div class="header-main">
+        <a href="#wiadomosci" class="brand-logo" onclick="switchTab('wiadomosci')">
+          <span class="brand-title">Pomysł DSJ2 Poznań - baza wyników</span>
+        </a>
+        <div class="header-quick-info">
+          <span>SEZON: 2026</span>
+        </div>
+      </div>
+
+      <!-- Navigation Line: Wiadomości | Wyniki (Dropdown 2019-2026) | Ciekawostki -->
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li class="nav-item active" id="nav-wiadomosci">
+            <button class="nav-link" onclick="switchTab('wiadomosci')">Wiadomości</button>
+          </li>
+          <li class="nav-item" id="nav-wyniki">
+            <button class="nav-link" onclick="switchTab('wyniki')">
+              Wyniki <span class="nav-arrow">▼</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2026)">Sezon 2026 <span class="dropdown-badge">[LIVE]</span></a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2025)">Sezon 2025</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2024)">Sezon 2024</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2023)">Sezon 2023</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2022)">Sezon 2022</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2021)">Sezon 2021</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2020)">Sezon 2020</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2019)">Sezon 2019</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-rekordy">
+            <button class="nav-link" onclick="switchTab('rekordy')">Rekordy</button>
+          </li>
+          <li class="nav-item" id="nav-ciekawostki">
+            <button class="nav-link" onclick="switchTab('ciekawostki')">Ciekawostki</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Banner with Authentic Two Hills Pixel Art Scenery -->
+    <section class="hero-banner">
+      <span class="hero-tag">[ARCHIWUM TURNIEJOWE DSJ2]</span>
+      <h1 class="hero-headline">BAZA WYNIKÓW I HISTORIA SKOKÓW <span>DELUXE SKI JUMP 2</span></h1>
+      <div class="hero-stats-row">
+        <div class="stat-pill">SKOCZNIA: <span class="stat-val">IRLANDIA K125</span></div>
+        <div class="stat-pill">REKORD: <span class="stat-val">128.42m (Tomasz Poznański)</span></div>
+        <div class="stat-pill">SEZONY: <span class="stat-val">2019 - 2026</span></div>
+      </div>
+    </section>
+
+    <!-- Dynamic Content Sections -->
+    <main class="content-area">
+
+      <!-- Tab 1: Wiadomości -->
+      <section class="tab-section active" id="sec-wiadomosci">
+        <div class="section-title-bar">
+          <h2 class="section-title">NAJNOWSZE WIADOMOŚCI</h2>
+          <span style="font-size: 10px; color: var(--dsj-yellow-dim);">ARCHIWUM AKTUALIZACJI</span>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-meta"><span>17 WRZ 2026</span><span>PUCHAR ŚWIATA</span></div>
+            <h3 class="news-heading">Tomasz Poznański dominuje na skoczni K125</h3>
+            <p class="news-snippet">Rekordowy skok w drugiej serii zapewnił zwycięstwo w klasyfikacji generalnej Sezonu 2026.</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta"><span>04 SIE 2026</span><span>REKORDY</span></div>
+            <h3 class="news-heading">Nowy rekord mamuta ustanowiony w Słowenii</h3>
+            <p class="news-snippet">Erik Nordqvist poszybował na odległość 214.2m przy idealnych podmuchach pod narty.</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta"><span>12 MAJ 2026</span><span>SPOŁECZNOŚĆ</span></div>
+            <h3 class="news-heading">Kolejna rocznica premiery Deluxe Ski Jump 2</h3>
+            <p class="news-snippet">Pikselowa fizyka Jussiego Koskeli nieustannie gromadzi entuzjastów precyzyjnych lądowań telemarkiem.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Tab 2: Wyniki (z sezonami 2019-2026) -->
+      <section class="tab-section" id="sec-wyniki">
+        <div class="section-title-bar">
+          <h2 class="section-title">TABELA WYNIKÓW: <span id="active-season-title">SEZON 2026</span></h2>
+          <span id="active-hill-badge" style="font-size: 10px; color: var(--dsj-cyan);">SKOCZNIA: IRLANDIA K125</span>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="results-controls">
+          <div class="season-filter-group">
+            <span class="filter-label">SEZON:</span>
+            <button class="season-btn active" onclick="selectSeason(2026)">2026</button>
+            <button class="season-btn" onclick="selectSeason(2025)">2025</button>
+            <button class="season-btn" onclick="selectSeason(2024)">2024</button>
+            <button class="season-btn" onclick="selectSeason(2023)">2023</button>
+            <button class="season-btn" onclick="selectSeason(2022)">2022</button>
+            <button class="season-btn" onclick="selectSeason(2021)">2021</button>
+            <button class="season-btn" onclick="selectSeason(2020)">2020</button>
+            <button class="season-btn" onclick="selectSeason(2019)">2019</button>
+          </div>
+          <input type="text" class="search-input" id="jumper-search" placeholder="SZUKAJ SKOCZKA..." oninput="filterJumpers()">
+        </div>
+
+        <!-- Scoreboard Table -->
+        <div class="scoreboard-table-wrap">
+          <table class="retro-table" id="results-table">
+            <thead>
+              <tr>
+                <th>MIEJSCE</th>
+                <th>ZAWODNIK</th>
+                <th>1. SKOK</th>
+                <th>2. SKOK</th>
+                <th>PUNKTY</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody id="results-tbody">
+              <!-- Rendered dynamically by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tab: Rekordy -->
+      <section class="tab-section" id="sec-rekordy">
+        <div class="section-title-bar">
+          <h2 class="section-title">OFICJALNE REKORDY SKOCZNI</h2>
+          <span style="font-size: 10px; color: var(--dsj-cyan);">DSJ2 HALL OF FAME</span>
+        </div>
+
+        <div class="scoreboard-table-wrap">
+          <table class="retro-table">
+            <thead>
+              <tr>
+                <th>LOKALIZACJA</th>
+                <th>PUNKT K</th>
+                <th>REKORD</th>
+                <th>REKORDZISTA</th>
+                <th>DATA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight">
+                <td>IRLANDIA</td>
+                <td>K125</td>
+                <td>128.42m</td>
+                <td>TOMASZ POZNAŃSKI</td>
+                <td>SEZON 2026</td>
+              </tr>
+              <tr>
+                <td>SŁOWENIA (PLANICA)</td>
+                <td>K185</td>
+                <td>214.20m</td>
+                <td>ERIK NORDQVIST</td>
+                <td>SEZON 2026</td>
+              </tr>
+              <tr>
+                <td>POLSKA (ZAKOPANE)</td>
+                <td>K120</td>
+                <td>132.50m</td>
+                <td>JANUSZ WIELKOPOLSKI</td>
+                <td>SEZON 2025</td>
+              </tr>
+              <tr>
+                <td>CZECHY (HARRACHOV)</td>
+                <td>K200</td>
+                <td>218.80m</td>
+                <td>LUKAS BERGSTRÖM</td>
+                <td>SEZON 2025</td>
+              </tr>
+              <tr>
+                <td>AUSTRALIA</td>
+                <td>K60</td>
+                <td>68.50m</td>
+                <td>MATEUSZ BELKA</td>
+                <td>SEZON 2024</td>
+              </tr>
+              <tr>
+                <td>NIEMCY</td>
+                <td>K140</td>
+                <td>145.20m</td>
+                <td>MARKUS WEISS</td>
+                <td>SEZON 2024</td>
+              </tr>
+              <tr>
+                <td>FINLANDIA</td>
+                <td>K170</td>
+                <td>178.60m</td>
+                <td>FINN MÄKINEN</td>
+                <td>SEZON 2023</td>
+              </tr>
+              <tr>
+                <td>SZWAJCARIA</td>
+                <td>K250</td>
+                <td>262.10m</td>
+                <td>KRZYSZTOF TELEMARK</td>
+                <td>SEZON 2023</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tab 3: Ciekawostki -->
+      <section class="tab-section" id="sec-ciekawostki">
+        <div class="section-title-bar">
+          <h2 class="section-title">CIEKAWOSTKI O DELUXE SKI JUMP 2</h2>
+          <span style="font-size: 10px; color: var(--dsj-yellow-dim);">HISTORIA & MECHANIKA</span>
+        </div>
+
+        <div class="trivia-list">
+          <article class="trivia-item">
+            <h3 class="trivia-title">1. FENOMEN POPULARNOŚCI W POLSCE</h3>
+            <p class="trivia-desc">W szczycie sukcesów Adama Małysza, DSJ2 gościło na niemal każdym szkolnym i domowym komputerze. Perfekcyjna intuicja sterowania dwoma przyciskami myszy i czysta rywalizacja zdefiniowały całe pokolenie graczy.</p>
+          </article>
+
+          <article class="trivia-item">
+            <h3 class="trivia-title">2. LĄDOWANIE TELEMARKIEM VS DWIE NOGI</h3>
+            <p class="trivia-desc">Pojedynczy klik lewym przyciskiem myszy tuż nad zeskokiem uruchamia elegancki telemark dający wysokie noty, podczas gdy wciśnięcie obu klawiszy zapewnia bezpieczne lądowanie na dwie nogi, chroniąc przed upadkiem przy dalekich próbach.</p>
+          </article>
+
+          <article class="trivia-item">
+            <h3 class="trivia-title">3. TŁO W GŁÓWNYM MENU</h3>
+            <p class="trivia-desc">Zdjęcie z menu to industrialny profil wieży najazdowej skoczni Holmenkollbakken w Oslo, z charakterystycznym monumentalnym łukiem betonowo-stalowej konstrukcji.</p>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      Pomysł Poznań 2026.
+    </footer>
+  </div>
+
+  <script>
+    // Tab Navigation
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+      const targetSec = document.getElementById(`sec-${tabId}`);
+      const targetNav = document.getElementById(`nav-${tabId}`);
+      if (targetSec) targetSec.classList.add('active');
+      if (targetNav) targetNav.classList.add('active');
+    }
+
+    // Dummy Jumpers Data for Seasons 2019-2026
+    const seasonResults = {
+      2026: [
+        { rank: 1, name: "TOMASZ POZNAŃSKI", jump1: "128.42m", jump2: "127.80m", pts: "256.4", isPlayer: true, note: "LIDER" },
+        { rank: 2, name: "ERIK NORDQVIST", jump1: "127.15m", jump2: "126.90m", pts: "252.1", isPlayer: false, note: "PODIUM" },
+        { rank: 3, name: "JANUSZ WIELKOPOLSKI", jump1: "126.30m", jump2: "125.75m", pts: "248.6", isPlayer: false, note: "PODIUM" },
+        { rank: 4, name: "LUKAS BERGSTRÖM", jump1: "124.50m", jump2: "124.20m", pts: "243.2", isPlayer: false, note: "FINAŁ" },
+        { rank: 5, name: "MATEUSZ BELKA", jump1: "123.80m", jump2: "122.90m", pts: "239.5", isPlayer: false, note: "FINAŁ" },
+        { rank: 6, name: "MARKUS WEISS", jump1: "122.40m", jump2: "121.80m", pts: "235.0", isPlayer: false, note: "FINAŁ" },
+        { rank: 7, name: "KRZYSZTOF TELEMARK", jump1: "121.90m", jump2: "122.50m", pts: "233.8", isPlayer: false, note: "FINAŁ" },
+        { rank: 8, name: "FINN MÄKINEN", jump1: "119.30m", jump2: "118.40m", pts: "226.7", isPlayer: false, note: "FINAŁ" },
+        { rank: 9, name: "OLAF TANDREVOLD", jump1: "116.20m", jump2: "115.80m", pts: "218.4", isPlayer: false, note: "FINAŁ" }
+      ],
+      2025: [
+        { rank: 1, name: "JANUSZ WIELKOPOLSKI", jump1: "128.10m", jump2: "128.50m", pts: "257.0", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "TOMASZ POZNAŃSKI", jump1: "127.20m", jump2: "126.80m", pts: "251.5", isPlayer: true, note: "PODIUM" },
+        { rank: 3, name: "ERIK NORDQVIST", jump1: "125.40m", jump2: "125.10m", pts: "247.3", isPlayer: false, note: "PODIUM" },
+        { rank: 4, name: "DAISUKE TANAKA", jump1: "123.90m", jump2: "123.40m", pts: "242.0", isPlayer: false, note: "FINAŁ" },
+        { rank: 5, name: "WOJCIECH ZAWIEC", jump1: "121.50m", jump2: "120.90m", pts: "235.8", isPlayer: false, note: "FINAŁ" }
+      ],
+      2024: [
+        { rank: 1, name: "LUKAS BERGSTRÖM", jump1: "126.90m", jump2: "127.30m", pts: "253.8", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "JANUSZ WIELKOPOLSKI", jump1: "125.80m", jump2: "125.20m", pts: "248.9", isPlayer: false, note: "PODIUM" },
+        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "124.60m", jump2: "124.90m", pts: "245.7", isPlayer: true, note: "PODIUM" },
+        { rank: 4, name: "MARKUS WEISS", jump1: "122.30m", jump2: "121.80m", pts: "238.1", isPlayer: false, note: "FINAŁ" }
+      ],
+      2023: [
+        { rank: 1, name: "ERIK NORDQVIST", jump1: "126.40m", jump2: "126.70m", pts: "251.6", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "MATEUSZ BELKA", jump1: "124.90m", jump2: "125.00m", pts: "246.8", isPlayer: false, note: "PODIUM" },
+        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "123.50m", jump2: "123.90m", pts: "241.4", isPlayer: true, note: "PODIUM" }
+      ],
+      2022: [
+        { rank: 1, name: "FINN MÄKINEN", jump1: "126.00m", jump2: "125.80m", pts: "249.5", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "ERIK NORDQVIST", jump1: "124.70m", jump2: "125.10m", pts: "246.2", isPlayer: false, note: "PODIUM" },
+        { rank: 3, name: "JANUSZ WIELKOPOLSKI", jump1: "122.80m", jump2: "123.10m", pts: "239.0", isPlayer: false, note: "FINAŁ" }
+      ],
+      2021: [
+        { rank: 1, name: "TOMASZ POZNAŃSKI", jump1: "127.30m", jump2: "127.50m", pts: "254.1", isPlayer: true, note: "MISTRZ" },
+        { rank: 2, name: "LUKAS BERGSTRÖM", jump1: "124.80m", jump2: "124.20m", pts: "245.0", isPlayer: false, note: "PODIUM" },
+        { rank: 3, name: "DAISUKE TANAKA", jump1: "122.10m", jump2: "122.40m", pts: "237.9", isPlayer: false, note: "FINAŁ" }
+      ],
+      2020: [
+        { rank: 1, name: "MARKUS WEISS", jump1: "125.90m", jump2: "126.10m", pts: "249.8", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "JANUSZ WIELKOPOLSKI", jump1: "124.20m", jump2: "124.50m", pts: "244.9", isPlayer: false, note: "PODIUM" },
+        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "121.40m", jump2: "121.80m", pts: "236.7", isPlayer: true, note: "FINAŁ" }
+      ],
+      2019: [
+        { rank: 1, name: "ERIK NORDQVIST", jump1: "126.80m", jump2: "127.10m", pts: "252.4", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "FINN MÄKINEN", jump1: "123.50m", jump2: "123.80m", pts: "242.7", isPlayer: false, note: "PODIUM" },
+        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "119.80m", jump2: "120.40m", pts: "231.2", isPlayer: true, note: "DEBIUT" }
+      ]
+    };
+
+    let currentSeason = 2026;
+
+    function renderResults(season, filterText = '') {
+      const tbody = document.getElementById('results-tbody');
+      tbody.innerHTML = '';
+      const list = seasonResults[season] || seasonResults[2026];
+
+      const filtered = list.filter(item => 
+        item.name.toLowerCase().includes(filterText.toLowerCase())
+      );
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--dsj-yellow-dim); padding: 20px;">BRAK WYNIKÓW DLA PODANEGO ZAWODNIKA</td></tr>`;
+        return;
+      }
+
+      filtered.forEach(row => {
+        const tr = document.createElement('tr');
+        if (row.isPlayer) tr.classList.add('highlight');
+        tr.innerHTML = `
+          <td>${row.rank}.</td>
+          <td>${row.name}</td>
+          <td>${row.jump1}</td>
+          <td>${row.jump2}</td>
+          <td>${row.pts}</td>
+          <td>${row.note}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function selectSeason(year) {
+      currentSeason = year;
+      switchTab('wyniki');
+
+      document.getElementById('active-season-title').textContent = `SEZON ${year}`;
+
+      document.querySelectorAll('.season-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim() === String(year));
+      });
+
+      renderResults(year, document.getElementById('jumper-search').value);
+    }
+
+    function filterJumpers() {
+      const val = document.getElementById('jumper-search').value;
+      renderResults(currentSeason, val);
+    }
+
+    // Initial render
+    window.addEventListener('DOMContentLoaded', () => {
+      renderResults(2026);
+    });
+  </script>
+</body>
+</html>
