@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pomysł Poznań - Baza Wyników</title>
+  <title>Pomysł Poznań - Baza Wyników DSJ2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -148,26 +148,24 @@
     .nav-item.active .nav-link {
       background: rgba(223, 212, 69, 0.18);
       color: var(--dsj-white);
-      outline: none;
     }
 
     .nav-arrow {
       font-size: 8px;
-      transition: transform 0.2s ease;
+      color: var(--dsj-yellow-dim);
     }
 
-    /* Dropdown for Wyniki (Sezony 2019-2026) */
+    /* Dropdown for Wyniki (Sezony) */
     .dropdown-menu {
       display: none;
       position: absolute;
       top: 100%;
       left: 0;
-      min-width: 200px;
-      background: #090c10;
+      background: var(--dsj-panel);
       border: 2px solid var(--dsj-panel-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
       list-style: none;
-      padding: 6px 0;
+      min-width: 220px;
       z-index: 200;
     }
 
@@ -176,111 +174,81 @@
       display: block;
     }
 
-    .nav-item:hover .nav-arrow {
-      transform: rotate(180deg);
-    }
-
     .dropdown-item a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 14px;
+      display: block;
+      padding: 10px 16px;
       color: var(--dsj-yellow);
       text-decoration: none;
-      font-size: clamp(8px, 0.95vw, 11px);
-      transition: all 0.1s ease;
+      font-size: clamp(8px, 1vw, 11px);
+      border-bottom: 1px solid var(--dsj-border-dim);
+      transition: background 0.1s ease;
     }
 
-    .dropdown-item a:hover,
-    .dropdown-item a:focus {
+    .dropdown-item a:hover {
       background: var(--dsj-yellow);
       color: #000;
-      outline: none;
     }
 
     .dropdown-badge {
-      font-size: 7px;
-      opacity: 0.8;
+      font-size: 8px;
+      background: var(--dsj-cyan);
+      color: #000;
+      padding: 2px 4px;
+      float: right;
+      font-weight: bold;
     }
 
-    /* Hero Banner with Authentic Pixel Hill Background */
+    /* Hero Banner */
     .hero-banner {
-      position: relative;
+      background: var(--dsj-panel);
       border: 3px solid var(--dsj-panel-border);
-      background-image: 
-        linear-gradient(rgba(8, 11, 14, 0.25), rgba(8, 11, 14, 0.55)),
-        url('dsj_hills_bg.jpg');
-      background-size: cover;
-      background-position: center 30%;
-      image-rendering: pixelated;
-      padding: clamp(24px, 5vw, 56px) clamp(16px, 3.5vw, 36px);
-      box-shadow: 0 0 20px rgba(223, 212, 69, 0.2);
+      padding: clamp(16px, 3vw, 28px);
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      overflow: hidden;
-    }
-
-    .hero-banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.12) 0px,
-        rgba(0, 0, 0, 0.12) 1px,
-        transparent 1px,
-        transparent 3px
-      );
-      pointer-events: none;
+      gap: 12px;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.7);
     }
 
     .hero-tag {
-      font-size: clamp(8px, 1vw, 11px);
       color: var(--dsj-cyan);
-      text-shadow: 1px 1px 0 #000;
-      z-index: 1;
+      font-size: clamp(8px, 1vw, 11px);
+      letter-spacing: 1px;
     }
 
     .hero-headline {
-      font-size: clamp(16px, 3vw, 32px);
+      font-size: clamp(14px, 2.2vw, 24px);
+      line-height: 1.4;
       color: var(--dsj-white);
-      text-shadow: 3px 3px 0 #000;
-      line-height: 1.35;
-      max-width: 800px;
-      z-index: 1;
+      text-shadow: 2px 2px 0 #000;
     }
 
     .hero-headline span {
-      color: var(--dsj-yellow-bright);
+      color: var(--dsj-yellow);
     }
 
     .hero-stats-row {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      z-index: 1;
-      margin-top: 10px;
+      margin-top: 6px;
+      padding-top: 12px;
+      border-top: 1px solid var(--dsj-border-dim);
     }
 
     .stat-pill {
-      background: rgba(0, 0, 0, 0.75);
-      border: 1px solid var(--dsj-yellow);
-      padding: 8px 14px;
       font-size: clamp(8px, 1vw, 11px);
-      display: flex;
-      gap: 8px;
+      color: var(--dsj-yellow-dim);
     }
 
     .stat-val {
-      color: var(--dsj-cyan);
+      color: var(--dsj-yellow-bright);
     }
 
-    /* Content Area */
-    main.content-area {
+    /* Content Area & Tabs */
+    .content-area {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
     .tab-section {
@@ -298,60 +266,54 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
-      border-bottom: 2px solid var(--dsj-panel-border);
-      padding-bottom: 10px;
+      gap: 8px;
+      border-left: 4px solid var(--dsj-yellow);
+      padding-left: 12px;
     }
 
     .section-title {
-      font-size: clamp(12px, 1.8vw, 18px);
-      color: var(--dsj-yellow);
-      text-shadow: 2px 2px 0 #000;
+      font-size: clamp(11px, 1.4vw, 16px);
+      letter-spacing: 0.5px;
+      color: var(--dsj-white);
     }
 
-    /* Grid for News (Wiadomości) */
+    /* News Cards */
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
     }
 
     .news-card {
       background: var(--dsj-card-bg);
       border: 2px solid var(--dsj-border-dim);
-      padding: 20px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      transition: transform 0.15s ease, border-color 0.15s ease;
-    }
-
-    .news-card:hover {
-      border-color: var(--dsj-yellow);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 14px rgba(223, 212, 69, 0.15);
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     }
 
     .news-meta {
-      font-size: clamp(7px, 0.85vw, 9.5px);
+      font-size: 8px;
       color: var(--dsj-cyan);
       display: flex;
       justify-content: space-between;
     }
 
     .news-heading {
-      font-size: clamp(10px, 1.25vw, 14px);
-      color: var(--dsj-white);
+      font-size: clamp(9px, 1.1vw, 13px);
+      color: var(--dsj-yellow-bright);
       line-height: 1.4;
     }
 
     .news-snippet {
-      font-size: clamp(8px, 1vw, 11px);
+      font-size: clamp(7.5px, 0.95vw, 10.5px);
       color: var(--dsj-yellow-dim);
       line-height: 1.6;
     }
 
-    /* Results Database (Wyniki) */
+    /* Results Controls */
     .results-controls {
       display: flex;
       flex-wrap: wrap;
@@ -407,11 +369,53 @@
       border-color: var(--dsj-yellow);
     }
 
+    /* Competition Filter Controls */
+    .comp-controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      background: rgba(10, 14, 18, 0.95);
+      border: 2px solid var(--dsj-border-dim);
+      border-top: none;
+      padding: 10px 14px;
+    }
+
+    .comp-btn {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--dsj-border-dim);
+      color: var(--dsj-yellow-dim);
+      font-family: inherit;
+      font-size: clamp(7px, 0.85vw, 9.5px);
+      padding: 5px 8px;
+      cursor: pointer;
+      transition: all 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .comp-btn:hover, .comp-btn.active {
+      border-color: var(--dsj-cyan);
+      background: rgba(92, 251, 251, 0.18);
+      color: var(--dsj-cyan);
+    }
+
+    .comp-btn.major {
+      border-color: var(--dsj-yellow);
+      color: var(--dsj-yellow);
+    }
+    .comp-btn.major:hover, .comp-btn.major.active {
+      background: var(--dsj-yellow);
+      color: #000;
+      border-color: var(--dsj-yellow);
+    }
+
+    /* Scoreboard Tables */
     .scoreboard-table-wrap {
       background: var(--dsj-panel);
       border: 3px solid var(--dsj-panel-border);
       overflow-x: auto;
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+      margin-bottom: 20px;
     }
 
     .retro-table {
@@ -424,14 +428,15 @@
     .retro-table th {
       background: rgba(223, 212, 69, 0.15);
       color: var(--dsj-yellow);
-      padding: 12px 16px;
+      padding: 12px 14px;
       text-align: left;
       border-bottom: 2px solid var(--dsj-panel-border);
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     .retro-table td {
-      padding: 12px 16px;
+      padding: 11px 14px;
       border-bottom: 1px solid rgba(223, 212, 69, 0.1);
       color: var(--dsj-yellow);
       white-space: nowrap;
@@ -445,6 +450,60 @@
       color: var(--dsj-cyan);
       background: rgba(92, 251, 251, 0.08);
       text-shadow: 0 0 6px rgba(92, 251, 251, 0.4);
+    }
+
+    .retro-table tr.gold td {
+      color: var(--dsj-yellow-bright);
+      background: rgba(255, 235, 59, 0.12);
+      font-weight: bold;
+    }
+
+    /* Competition Cards */
+    .comp-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .comp-card-header {
+      background: var(--dsj-panel);
+      border: 2px solid var(--dsj-panel-border);
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comp-card-title {
+      font-size: clamp(10px, 1.2vw, 14px);
+      color: var(--dsj-yellow);
+      letter-spacing: 0.5px;
+    }
+
+    .comp-card-date {
+      font-size: clamp(8px, 0.9vw, 11px);
+      color: var(--dsj-cyan);
+    }
+
+    .record-alert {
+      background: rgba(92, 251, 251, 0.12);
+      border: 2px solid var(--dsj-cyan);
+      color: var(--dsj-cyan);
+      padding: 10px 14px;
+      font-size: clamp(8px, 0.95vw, 11px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hills-title {
+      font-size: clamp(8.5px, 1vw, 11.5px);
+      color: var(--dsj-yellow-dim);
+      padding: 4px 8px;
+      letter-spacing: 0.5px;
     }
 
     /* Trivia (Ciekawostki) */
@@ -500,29 +559,29 @@
           <span class="brand-title">Pomysł DSJ2 Poznań - baza wyników</span>
         </a>
         <div class="header-quick-info">
-          <span>SEZON: 2026</span>
+          <span>SEZON: 2025/2026</span>
         </div>
       </div>
 
-      <!-- Navigation Line: Wiadomości | Wyniki (Dropdown 2019-2026) | Ciekawostki -->
+      <!-- Navigation Line -->
       <nav class="site-nav">
         <ul class="nav-list">
-          <li class="nav-item active" id="nav-wiadomosci">
+          <li class="nav-item" id="nav-wiadomosci">
             <button class="nav-link" onclick="switchTab('wiadomosci')">Wiadomości</button>
           </li>
-          <li class="nav-item" id="nav-wyniki">
+          <li class="nav-item active" id="nav-wyniki">
             <button class="nav-link" onclick="switchTab('wyniki')">
               Wyniki <span class="nav-arrow">▼</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2026)">Sezon 2026 <span class="dropdown-badge">[LIVE]</span></a></li>
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2025)">Sezon 2025</a></li>
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2024)">Sezon 2024</a></li>
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2023)">Sezon 2023</a></li>
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2022)">Sezon 2022</a></li>
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2021)">Sezon 2021</a></li>
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2020)">Sezon 2020</a></li>
-              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2019)">Sezon 2019</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason('2025/2026')">Sezon 2025/2026 <span class="dropdown-badge">[OFICJALNY]</span></a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2025)">Sezon 2024/2025</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2024)">Sezon 2023/2024</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2023)">Sezon 2022/2023</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2022)">Sezon 2021/2022</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2021)">Sezon 2020/2021</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2020)">Sezon 2019/2020</a></li>
+              <li class="dropdown-item"><a href="#wyniki" onclick="selectSeason(2019)">Sezon 2018/2019</a></li>
             </ul>
           </li>
           <li class="nav-item" id="nav-rekordy">
@@ -535,14 +594,15 @@
       </nav>
     </header>
 
-    <!-- Hero Banner with Authentic Two Hills Pixel Art Scenery -->
+    <!-- Hero Banner -->
     <section class="hero-banner">
       <span class="hero-tag">[ARCHIWUM TURNIEJOWE DSJ2]</span>
       <h1 class="hero-headline">BAZA WYNIKÓW I HISTORIA SKOKÓW <span>DELUXE SKI JUMP 2</span></h1>
       <div class="hero-stats-row">
-        <div class="stat-pill">SKOCZNIA: <span class="stat-val">IRLANDIA K125</span></div>
-        <div class="stat-pill">REKORD: <span class="stat-val">128.42m (Tomasz Poznański)</span></div>
-        <div class="stat-pill">SEZONY: <span class="stat-val">2019 - 2026</span></div>
+        <div class="stat-pill">MISTRZ: <span class="stat-val">ADAM MAŁYSZ (2025/2026)</span></div>
+        <div class="stat-pill">SKOCZNIE: <span class="stat-val">37 OFICJALNYCH</span></div>
+        <div class="stat-pill">LIGA: <span class="stat-val">NTWDSJ2.1</span></div>
+        <div class="stat-pill">SEZONY: <span class="stat-val">#1 - #7 (2019 - 2026)</span></div>
       </div>
     </section>
 
@@ -550,7 +610,7 @@
     <main class="content-area">
 
       <!-- Tab 1: Wiadomości -->
-      <section class="tab-section active" id="sec-wiadomosci">
+      <section class="tab-section" id="sec-wiadomosci">
         <div class="section-title-bar">
           <h2 class="section-title">NAJNOWSZE WIADOMOŚCI</h2>
           <span style="font-size: 10px; color: var(--dsj-yellow-dim);">ARCHIWUM AKTUALIZACJI</span>
@@ -558,37 +618,37 @@
 
         <div class="news-grid">
           <article class="news-card">
-            <div class="news-meta"><span>17 WRZ 2026</span><span>PUCHAR ŚWIATA</span></div>
-            <h3 class="news-heading">Tomasz Poznański dominuje na skoczni K125</h3>
-            <p class="news-snippet">Rekordowy skok w drugiej serii zapewnił zwycięstwo w klasyfikacji generalnej Sezonu 2026.</p>
+            <div class="news-meta"><span>26 MAR 2026</span><span>NTWDSJ2.1 #7</span></div>
+            <h3 class="news-heading">Adam Małysz Mistrzem Sezonu 2025/2026!</h3>
+            <p class="news-snippet">Po 18 emocjonujących konkursach Adam Małysz z dorobkiem 1120 punktów (TOP13) zdobywa Kryształową Kulę przed Ajzenbiślą (1080 pkt) i Andrzejem (1000 pkt).</p>
           </article>
 
           <article class="news-card">
-            <div class="news-meta"><span>04 SIE 2026</span><span>REKORDY</span></div>
-            <h3 class="news-heading">Nowy rekord mamuta ustanowiony w Słowenii</h3>
-            <p class="news-snippet">Erik Nordqvist poszybował na odległość 214.2m przy idealnych podmuchach pod narty.</p>
+            <div class="news-meta"><span>26 MAR 2026</span><span>REKORDY</span></div>
+            <h3 class="news-heading">Michauu bije rekord Chin: 242.42m!</h3>
+            <p class="news-snippet">W finałowym 18. konkursie Michauu poszybował na odległość 242.42m na mamucie w Chinach K205, ustanawiając nowy oficjalny rekord skoczni.</p>
           </article>
 
           <article class="news-card">
-            <div class="news-meta"><span>12 MAJ 2026</span><span>SPOŁECZNOŚĆ</span></div>
-            <h3 class="news-heading">Kolejna rocznica premiery Deluxe Ski Jump 2</h3>
-            <p class="news-snippet">Pikselowa fizyka Jussiego Koskeli nieustannie gromadzi entuzjastów precyzyjnych lądowań telemarkiem.</p>
+            <div class="news-meta"><span>11 GRU 2025</span><span>REKORDY</span></div>
+            <h3 class="news-heading">Fenomenalny lot Ajzenbiśli w Planicy: 283.16m!</h3>
+            <p class="news-snippet">Podczas 6. konkursu ligi Ajzenbiśla wylądował na 283.16m na mamucie K250 w Słowenii, poprawiając historyczny rekord obiektu.</p>
           </article>
         </div>
       </section>
 
-      <!-- Tab 2: Wyniki (z sezonami 2019-2026) -->
-      <section class="tab-section" id="sec-wyniki">
+      <!-- Tab 2: Wyniki -->
+      <section class="tab-section active" id="sec-wyniki">
         <div class="section-title-bar">
-          <h2 class="section-title">TABELA WYNIKÓW: <span id="active-season-title">SEZON 2026</span></h2>
-          <span id="active-hill-badge" style="font-size: 10px; color: var(--dsj-cyan);">SKOCZNIA: IRLANDIA K125</span>
+          <h2 class="section-title">TABELA WYNIKÓW: <span id="active-season-title">SEZON 2025/2026</span></h2>
+          <span id="active-hill-badge" style="font-size: 10px; color: var(--dsj-cyan);">18 KONKURSÓW + TCS + IO</span>
         </div>
 
         <!-- Filter bar -->
         <div class="results-controls">
           <div class="season-filter-group">
             <span class="filter-label">SEZON:</span>
-            <button class="season-btn active" onclick="selectSeason(2026)">2026</button>
+            <button class="season-btn active" onclick="selectSeason('2025/2026')">2025/2026</button>
             <button class="season-btn" onclick="selectSeason(2025)">2025</button>
             <button class="season-btn" onclick="selectSeason(2024)">2024</button>
             <button class="season-btn" onclick="selectSeason(2023)">2023</button>
@@ -600,23 +660,35 @@
           <input type="text" class="search-input" id="jumper-search" placeholder="SZUKAJ SKOCZKA..." oninput="filterJumpers()">
         </div>
 
-        <!-- Scoreboard Table -->
-        <div class="scoreboard-table-wrap">
-          <table class="retro-table" id="results-table">
-            <thead>
-              <tr>
-                <th>MIEJSCE</th>
-                <th>ZAWODNIK</th>
-                <th>1. SKOK</th>
-                <th>2. SKOK</th>
-                <th>PUNKTY</th>
-                <th>STATUS</th>
-              </tr>
-            </thead>
-            <tbody id="results-tbody">
-              <!-- Rendered dynamically by JS -->
-            </tbody>
-          </table>
+        <!-- Competition Filter Controls (Sezon 2025/2026) -->
+        <div class="comp-controls-bar" id="comp-controls">
+          <button class="comp-btn major active" onclick="selectComp('general')">🏆 KLASYFIKACJA GENERALNA</button>
+          <button class="comp-btn major" onclick="selectComp('all')">📜 WSZYSTKIE KONKURSY</button>
+          <button class="comp-btn" onclick="selectComp(1)">#1 06.11</button>
+          <button class="comp-btn" onclick="selectComp(2)">#2 13.11</button>
+          <button class="comp-btn" onclick="selectComp(3)">#3 20.11</button>
+          <button class="comp-btn" onclick="selectComp(4)">#4 27.11</button>
+          <button class="comp-btn" onclick="selectComp(5)">#5 04.12</button>
+          <button class="comp-btn" onclick="selectComp(6)">#6 11.12</button>
+          <button class="comp-btn" onclick="selectComp(7)">#7 18.12</button>
+          <button class="comp-btn" onclick="selectComp(8)">#8 TCS 08.01</button>
+          <button class="comp-btn" onclick="selectComp(9)">#9 15.01</button>
+          <button class="comp-btn" onclick="selectComp(10)">#10 MŚ 22.01</button>
+          <button class="comp-btn" onclick="selectComp(11)">#11 Polish Tour</button>
+          <button class="comp-btn" onclick="selectComp(12)">#12 05.02</button>
+          <button class="comp-btn" onclick="selectComp('io')">IO 12.02</button>
+          <button class="comp-btn" onclick="selectComp(13)">#13 19.02</button>
+          <button class="comp-btn" onclick="selectComp(14)">#14 26.02</button>
+          <button class="comp-btn" onclick="selectComp(15)">#15 05.03</button>
+          <button class="comp-btn" onclick="selectComp(16)">#16 12.03</button>
+          <button class="comp-btn" onclick="selectComp(17)">#17 19.03</button>
+          <button class="comp-btn" onclick="selectComp(18)">#18 Finał 26.03</button>
+          <button class="comp-btn" onclick="selectComp('tcs')">TCS (Tabela)</button>
+        </div>
+
+        <!-- Dynamic Results Container -->
+        <div id="results-display-area">
+          <!-- Dynamically populated by JavaScript -->
         </div>
       </section>
 
@@ -624,7 +696,7 @@
       <section class="tab-section" id="sec-rekordy">
         <div class="section-title-bar">
           <h2 class="section-title">OFICJALNE REKORDY SKOCZNI</h2>
-          <span style="font-size: 10px; color: var(--dsj-cyan);">DSJ2 HALL OF FAME</span>
+          <span style="font-size: 10px; color: var(--dsj-cyan);">DSJ2 HALL OF FAME (37 SKOCZNI)</span>
         </div>
 
         <div class="scoreboard-table-wrap">
@@ -639,61 +711,264 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="highlight">
-                <td>IRLANDIA</td>
-                <td>K125</td>
-                <td>128.42m</td>
-                <td>TOMASZ POZNAŃSKI</td>
-                <td>SEZON 2026</td>
-              </tr>
-              <tr>
-                <td>SŁOWENIA (PLANICA)</td>
-                <td>K185</td>
-                <td>214.20m</td>
-                <td>ERIK NORDQVIST</td>
-                <td>SEZON 2026</td>
-              </tr>
-              <tr>
-                <td>POLSKA (ZAKOPANE)</td>
-                <td>K120</td>
-                <td>132.50m</td>
-                <td>JANUSZ WIELKOPOLSKI</td>
-                <td>SEZON 2025</td>
-              </tr>
-              <tr>
-                <td>CZECHY (HARRACHOV)</td>
-                <td>K200</td>
-                <td>218.80m</td>
-                <td>LUKAS BERGSTRÖM</td>
-                <td>SEZON 2025</td>
-              </tr>
-              <tr>
-                <td>AUSTRALIA</td>
-                <td>K60</td>
-                <td>68.50m</td>
-                <td>MATEUSZ BELKA</td>
-                <td>SEZON 2024</td>
-              </tr>
-              <tr>
-                <td>NIEMCY</td>
-                <td>K140</td>
-                <td>145.20m</td>
-                <td>MARKUS WEISS</td>
-                <td>SEZON 2024</td>
-              </tr>
               <tr>
                 <td>FINLANDIA</td>
-                <td>K170</td>
-                <td>178.60m</td>
-                <td>FINN MÄKINEN</td>
-                <td>SEZON 2023</td>
+                <td>K105</td>
+                <td>115.52m</td>
+                <td>DOMIN</td>
+                <td>13.12.2022</td>
               </tr>
               <tr>
                 <td>SZWAJCARIA</td>
+                <td>K170</td>
+                <td>204.33m</td>
+                <td>AJZENBIŚLA</td>
+                <td>10.05.2024 (LGP)</td>
+              </tr>
+              <tr>
+                <td>CZECHY</td>
+                <td>K135</td>
+                <td>152.03m</td>
+                <td>AJZENBIŚLA</td>
+                <td>17.12.2024</td>
+              </tr>
+              <tr class="highlight">
+                <td>BIAŁORUŚ</td>
+                <td>K220</td>
+                <td>261.72m</td>
+                <td>ADAM MAŁYSZ</td>
+                <td>10.01.2023</td>
+              </tr>
+              <tr>
+                <td>AUSTRIA</td>
+                <td>K70</td>
+                <td>82.17m</td>
+                <td>DOMIN</td>
+                <td>15.11.2022</td>
+              </tr>
+              <tr>
+                <td>USA</td>
+                <td>K130</td>
+                <td>161.76m</td>
+                <td>ANDRZEJ</td>
+                <td>22.02.2022</td>
+              </tr>
+              <tr>
+                <td>ŁOTWA</td>
+                <td>K165</td>
+                <td>188.15m</td>
+                <td>SEWEK</td>
+                <td>26.11.2024</td>
+              </tr>
+              <tr>
+                <td>POLSKA</td>
+                <td>K80</td>
+                <td>91.60m</td>
+                <td>ADAM MAŁYSZ</td>
+                <td>20.02.2024</td>
+              </tr>
+              <tr>
+                <td>JAPONIA</td>
+                <td>K210</td>
+                <td>232.02m</td>
+                <td>FELEK</td>
+                <td>19.09.2023</td>
+              </tr>
+              <tr>
+                <td>BELGIA</td>
+                <td>K95</td>
+                <td>121.86m</td>
+                <td>ANDRZEJ</td>
+                <td>25.03.2025</td>
+              </tr>
+              <tr>
+                <td>ISLANDIA</td>
+                <td>K190</td>
+                <td>208.02m</td>
+                <td>GRZYWA</td>
+                <td>21.03.2023</td>
+              </tr>
+              <tr>
+                <td>ANGLIA</td>
+                <td>K50</td>
+                <td>60.31m</td>
+                <td>DOMIN</td>
+                <td>04.01.2022</td>
+              </tr>
+              <tr>
+                <td>NIEMCY</td>
+                <td>K120</td>
+                <td>133.19m</td>
+                <td>FELEK</td>
+                <td>07.01.2025</td>
+              </tr>
+              <tr>
+                <td>ESTONIA</td>
+                <td>K155</td>
+                <td>178.33m</td>
+                <td>MARCIN WOŹNIAK</td>
+                <td>29.11.2022</td>
+              </tr>
+              <tr>
+                <td>NORWEGIA</td>
+                <td>K90</td>
+                <td>101.78m</td>
+                <td>DOMIN</td>
+                <td>04.01.2022</td>
+              </tr>
+              <tr class="highlight">
+                <td>AUSTRALIA</td>
+                <td>K240</td>
+                <td>291.24m</td>
+                <td>DOMIN</td>
+                <td>04.01.2022</td>
+              </tr>
+              <tr>
+                <td>IRLANDIA</td>
+                <td>K125</td>
+                <td>137.90m</td>
+                <td>AJZENBIŚLA</td>
+                <td>20.11.2025</td>
+              </tr>
+              <tr>
+                <td>UKRAINA</td>
+                <td>K60</td>
+                <td>70.43m</td>
+                <td>MAGIKDSJ</td>
+                <td>04.03.2025</td>
+              </tr>
+              <tr>
+                <td>WĘGRY</td>
+                <td>K180</td>
+                <td>222.10m</td>
+                <td>AJZENBIŚLA</td>
+                <td>25.02.2025</td>
+              </tr>
+              <tr>
+                <td>SZWECJA</td>
+                <td>K150</td>
+                <td>159.30m</td>
+                <td>FASOL</td>
+                <td>26.03.2024</td>
+              </tr>
+              <tr class="highlight">
+                <td>WŁOCHY</td>
+                <td>K230</td>
+                <td>252.14m</td>
+                <td>AJZENBIŚLA</td>
+                <td>17.12.2024</td>
+              </tr>
+              <tr>
+                <td>DANIA</td>
+                <td>K75</td>
+                <td>91.67m</td>
+                <td>BULOKLEP</td>
+                <td>18.03.2025</td>
+              </tr>
+              <tr>
+                <td>SŁOWACJA</td>
+                <td>K110</td>
+                <td>128.52m</td>
+                <td>AJZENBIŚLA</td>
+                <td>16.07.2024</td>
+              </tr>
+              <tr>
+                <td>KANADA</td>
+                <td>K185</td>
+                <td>202.31m</td>
+                <td>EDDIE EDWARDS</td>
+                <td>29.10.2024</td>
+              </tr>
+              <tr>
+                <td>LITWA</td>
+                <td>K145</td>
+                <td>164.37m</td>
+                <td>DOMIN</td>
+                <td>22.03.2024</td>
+              </tr>
+              <tr>
+                <td>KAZACHSTAN</td>
+                <td>K85</td>
+                <td>102.19m</td>
+                <td>ANDRZEJ</td>
+                <td>04.03.2025; 12.11.2024</td>
+              </tr>
+              <tr class="highlight">
+                <td>CHINY</td>
+                <td>K205</td>
+                <td>242.42m</td>
+                <td>MICHAUU</td>
+                <td>26.03.2026; 27.11.2025; 14.02.2023</td>
+              </tr>
+              <tr>
+                <td>FRANCJA</td>
+                <td>K160</td>
+                <td>175.79m</td>
+                <td>FASOL</td>
+                <td>21.02.2023</td>
+              </tr>
+              <tr>
+                <td>HOLANDIA</td>
+                <td>K100</td>
+                <td>121.30m</td>
+                <td>AJZENBIŚLA</td>
+                <td>06.08.2024</td>
+              </tr>
+              <tr>
+                <td>ROSJA</td>
+                <td>K200</td>
+                <td>224.35m</td>
+                <td>RATAJ</td>
+                <td>07.12.2021</td>
+              </tr>
+              <tr>
+                <td>KOREA</td>
+                <td>K140</td>
+                <td>172.45m</td>
+                <td>ANDRZEJ</td>
+                <td>26.03.2024</td>
+              </tr>
+              <tr class="highlight">
+                <td>SŁOWENIA</td>
                 <td>K250</td>
-                <td>262.10m</td>
-                <td>KRZYSZTOF TELEMARK</td>
-                <td>SEZON 2023</td>
+                <td>283.16m</td>
+                <td>AJZENBIŚLA</td>
+                <td>11.12.2025; 30.01.2024</td>
+              </tr>
+              <tr>
+                <td>ZAKOPANE 1</td>
+                <td>K120</td>
+                <td>131.42m</td>
+                <td>ANDRZEJ</td>
+                <td>14.02.2023</td>
+              </tr>
+              <tr>
+                <td>ZAKOPANE 2</td>
+                <td>K65</td>
+                <td>74.65m</td>
+                <td>BULOKLEP</td>
+                <td>23.07.2024</td>
+              </tr>
+              <tr>
+                <td>KARPACZ</td>
+                <td>K85</td>
+                <td>95.54m</td>
+                <td>FELEK</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>WISŁA</td>
+                <td>K105</td>
+                <td>115.94m</td>
+                <td>SEWEK</td>
+                <td>16.01.2024</td>
+              </tr>
+              <tr>
+                <td>SZCZYRK</td>
+                <td>K85</td>
+                <td>96.80m</td>
+                <td>AJZENBIŚLA</td>
+                <td>03.12.2024</td>
               </tr>
             </tbody>
           </table>
@@ -709,8 +984,8 @@
 
         <div class="trivia-list">
           <article class="trivia-item">
-            <h3 class="trivia-title">1. FENOMEN POPULARNOŚCI W POLSCE</h3>
-            <p class="trivia-desc">W szczycie sukcesów Adama Małysza, DSJ2 gościło na niemal każdym szkolnym i domowym komputerze. Perfekcyjna intuicja sterowania dwoma przyciskami myszy i czysta rywalizacja zdefiniowały całe pokolenie graczy.</p>
+            <h3 class="trivia-title">1. SYSTEM PUNKTACJI NTWDSJ2.1</h3>
+            <p class="trivia-desc">W klasyfikacji generalnej ligi obowiązuje zasada TOP13* — do łącznej noty zalicza się 13 najlepszych występów każdego zawodnika w sezonie, co pozwala odrzucić słabsze lub opuszczone konkursy.</p>
           </article>
 
           <article class="trivia-item">
@@ -729,12 +1004,45 @@
 
     <!-- Site Footer -->
     <footer class="site-footer">
-      Pomysł Poznań 2026.
+      Pomysł Poznań 2026. Baza wyników ligi NTWDSJ2.1.
     </footer>
   </div>
 
   <script>
-    // Tab Navigation
+    // Embedded authentic data for Season 2025/2026 from Excel
+    const season2526Data = {"season": "2025/2026", "calendar": [{"row": 2, "num": 1, "name": "#1 NTWDSJ2.1 - inauguracja", "date": "06.11.2025"}, {"row": 3, "num": 2, "name": "#2 NTWDSJ2.1", "date": "13.11.2025"}, {"row": 4, "num": 3, "name": "#3 NTWDSJ2.1", "date": "20.11.2025"}, {"row": 5, "num": 4, "name": "#4 NTWDSJ2.1", "date": "27.11.2025"}, {"row": 6, "num": 5, "name": "#5 NTWDSJ2.1", "date": "04.12.2025"}, {"row": 7, "num": 6, "name": "#6 NTWDSJ2.1", "date": "11.12.2025"}, {"row": 8, "num": 7, "name": "#7 NTWDSJ2.1", "date": "18.12.2025"}, {"row": 9, "num": 8, "name": "Turniej Czterech Skoczni", "date": "08.01.2026"}, {"row": 10, "num": 9, "name": "#9 NTWDSJ2.1", "date": "15.01.2026"}, {"row": 11, "num": 10, "name": "Mistrzostwa Świata", "date": "22.01.2026"}, {"row": 12, "num": 11, "name": "Polish Tour", "date": "29.01.2026"}, {"row": 13, "num": 12, "name": "#12 NTWDSJ2.1", "date": "05.02.2026"}, {"row": 14, "num": 13, "name": "Igrzyska Olimpijskie", "date": "12.02.2026"}, {"row": 15, "num": 14, "name": "#13 NTWDSJ2.1", "date": "19.02.2026"}, {"row": 16, "num": 15, "name": "#14 NTWDSJ2.1", "date": "26.02.2026"}, {"row": 17, "num": 16, "name": "#15 NTWDSJ2.1", "date": "05.03.2026"}, {"row": 18, "num": 17, "name": "#16 NTWDSJ2.1", "date": "12.03.2026"}, {"row": 19, "num": 18, "name": "#17 NTWDSJ2.1", "date": "19.03.2026"}, {"row": 20, "num": 19, "name": "#18 NTWDSJ2.1 - zakończenie", "date": "26.03.2026"}], "general": [{"rank": "1.", "name": "ADAM MAŁYSZ", "top13": 1120, "total": 1220, "loss": "0", "wins": 6, "second": 5, "third": 3, "starts": 15, "comp_pts": {"1": 40, "2": 80, "3": 100, "5": 100, "7": 100, "8": 80, "9": 100, "10": 60, "11": 60, "12": 100, "13": 80, "15": 80, "16": 100, "17": 80, "18": 60}}, {"rank": "2.", "name": "AJZENBIŚLA", "top13": 1080, "total": 1380, "loss": "-40", "wins": 4, "second": 7, "third": 7, "starts": 18, "comp_pts": {"1": 60, "2": 100, "3": 80, "4": 80, "5": 60, "6": 80, "7": 80, "8": 100, "9": 80, "10": 80, "11": 80, "12": 60, "13": 60, "14": 60, "15": 100, "16": 60, "17": 60, "18": 100}}, {"rank": "3.", "name": "ANDRZEJ", "top13": 1000, "total": 1171, "loss": "-120", "wins": 5, "second": 3, "third": 1, "starts": 17, "comp_pts": {"1": 50, "3": 50, "4": 100, "5": 36, "6": 50, "7": 60, "8": 45, "9": 50, "10": 100, "11": 100, "12": 80, "13": 100, "14": 80, "15": 45, "16": 45, "17": 100, "18": 80}}, {"rank": "4.", "name": "MATTI NYKANEN", "top13": 722, "total": 722, "loss": "-398", "wins": 1, "second": 3, "third": 2, "starts": 12, "comp_pts": {"1": 80, "4": 60, "5": 80, "6": 60, "7": 50, "10": 50, "12": 40, "13": 50, "14": 100, "15": 40, "16": 80, "18": 32}}, {"rank": "5.", "name": "MICHAUU", "top13": 585, "total": 733, "loss": "-535", "wins": 0, "second": 0, "third": 0, "starts": 17, "comp_pts": {"1": 36, "2": 45, "3": 45, "4": 40, "5": 50, "6": 45, "7": 40, "8": 36, "9": 36, "10": 45, "11": 50, "12": 40, "13": 45, "14": 50, "15": 50, "16": 40, "18": 40}}, {"rank": "6.", "name": "FELEK", "top13": 551, "total": 551, "loss": "-569", "wins": 1, "second": 0, "third": 1, "starts": 11, "comp_pts": {"1": 100, "2": 60, "5": 45, "6": 40, "7": 45, "8": 50, "10": 45, "12": 45, "13": 36, "14": 40, "18": 45}}, {"rank": "7.", "name": "BULOKLEP", "top13": 526, "total": 526, "loss": "-594", "wins": 1, "second": 0, "third": 1, "starts": 11, "comp_pts": {"1": 29, "3": 60, "4": 45, "5": 40, "6": 100, "7": 32, "8": 40, "9": 40, "13": 40, "16": 50, "17": 50}}, {"rank": "8.", "name": "GŁĘBOKA REZERWA", "top13": 498, "total": 520, "loss": "-622", "wins": 0, "second": 0, "third": 1, "starts": 14, "comp_pts": {"1": 22, "2": 40, "3": 40, "4": 50, "5": 29, "6": 36, "7": 36, "8": 29, "9": 45, "11": 40, "12": 32, "13": 29, "15": 60, "16": 32}}, {"rank": "9.", "name": "EDDIE EDWARDS", "top13": 409, "total": 409, "loss": "-711", "wins": 0, "second": 0, "third": 0, "starts": 12, "comp_pts": {"1": 24, "2": 36, "3": 36, "5": 32, "8": 26, "9": 29, "10": 32, "13": 32, "14": 45, "16": 36, "17": 45, "18": 36}}, {"rank": "10.", "name": "DOMINHUY", "top13": 335, "total": 335, "loss": "-785", "wins": 0, "second": 0, "third": 1, "starts": 8, "comp_pts": {"1": 45, "2": 50, "4": 36, "8": 32, "9": 60, "10": 36, "12": 50, "18": 26}}, {"rank": "11.", "name": "JARZĄBEK", "top13": 229, "total": 229, "loss": "-891", "wins": 0, "second": 0, "third": 0, "starts": 7, "comp_pts": {"1": 18, "9": 32, "11": 45, "15": 36, "16": 29, "17": 40, "18": 29}}, {"rank": "12.", "name": "MAREK MARECKI", "top13": 227, "total": 227, "loss": "-893", "wins": 0, "second": 0, "third": 0, "starts": 8, "comp_pts": {"9": 24, "10": 29, "11": 36, "12": 22, "15": 32, "16": 24, "17": 36, "18": 24}}, {"rank": "13.", "name": "GABSON", "top13": 186, "total": 186, "loss": "-934", "wins": 0, "second": 0, "third": 0, "starts": 8, "comp_pts": {"1": 16, "2": 32, "5": 26, "8": 20, "12": 24, "15": 26, "16": 22, "18": 20}}, {"rank": "14.", "name": "MAGNACKI", "top13": 169, "total": 169, "loss": "-951", "wins": 0, "second": 0, "third": 0, "starts": 6, "comp_pts": {"1": 20, "3": 32, "9": 26, "14": 36, "15": 29, "16": 26}}, {"rank": "15.", "name": "AGA POLIKARP", "top13": 137, "total": 137, "loss": "-983", "wins": 0, "second": 0, "third": 0, "starts": 5, "comp_pts": {"1": 15, "3": 29, "4": 32, "6": 32, "7": 29}}, {"rank": "16.", "name": "ANIA", "top13": 113, "total": 113, "loss": "-1007", "wins": 0, "second": 0, "third": 0, "starts": 5, "comp_pts": {"1": 13, "5": 24, "8": 18, "13": 26, "17": 32}}, {"rank": "17.", "name": "MAGIKDSJ", "top13": 82, "total": 82, "loss": "-1038", "wins": 0, "second": 0, "third": 0, "starts": 2, "comp_pts": {"1": 32, "18": 50}}, {"rank": "18.", "name": "DAWEK 6CM", "top13": 64, "total": 64, "loss": "-1056", "wins": 0, "second": 0, "third": 0, "starts": 3, "comp_pts": {"7": 26, "16": 20, "18": 18}}, {"rank": "19.", "name": "ZABIEGA", "top13": 62, "total": 62, "loss": "-1058", "wins": 0, "second": 0, "third": 0, "starts": 3, "comp_pts": {"1": 14, "8": 22, "12": 26}}, {"rank": "20.", "name": "SEWEK", "top13": 60, "total": 60, "loss": "-1060", "wins": 0, "second": 0, "third": 1, "starts": 1, "comp_pts": {"8": 60}}, {"rank": "21.", "name": "PAŁLINA", "top13": 29, "total": 29, "loss": "-1091", "wins": 0, "second": 0, "third": 0, "starts": 1, "comp_pts": {"4": 29}}, {"rank": "22.", "name": "ROBERTO CECON", "top13": 29, "total": 29, "loss": "-1091", "wins": 0, "second": 0, "third": 0, "starts": 1, "comp_pts": {"12": 29}}, {"rank": "23.", "name": "GLIXI", "top13": 26, "total": 26, "loss": "-1094", "wins": 0, "second": 0, "third": 0, "starts": 1, "comp_pts": {"1": 26}}, {"rank": "24.", "name": "QNA", "top13": 24, "total": 24, "loss": "-1096", "wins": 0, "second": 0, "third": 0, "starts": 1, "comp_pts": {"8": 24}}], "competitions": [{"id": 1, "name": "#1 NTWDSJ2.1 - inauguracja", "date": "06.11.2025", "standings": [{"rank": "1.", "name": "FELEK", "points": "609", "h1": "3", "h2": "2", "h3": "0", "cup_pts": 100}, {"rank": "2.", "name": "MATTI NYKANEN", "points": "608", "h1": "2", "h2": "3", "h3": "0", "cup_pts": 80}, {"rank": "3.", "name": "AJZENBIŚLA", "points": "550", "h1": "2", "h2": "1", "h3": "1", "cup_pts": 60}, {"rank": "4.", "name": "ANDRZEJ", "points": "507", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 50}, {"rank": "5.", "name": "DOMINHUY", "points": "491", "h1": "0", "h2": "2", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "ADAM MAŁYSZ", "points": "490", "h1": "0", "h2": "1", "h3": "3", "cup_pts": 40}, {"rank": "7.", "name": "MICHAUU", "points": "439", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "MAGIKDSJ", "points": "413", "h1": "0", "h2": "1", "h3": "1", "cup_pts": 32}, {"rank": "9.", "name": "BULOKLEP", "points": "373", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 29}, {"rank": "10.", "name": "GLIXI", "points": "367", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 26}, {"rank": "11.", "name": "EDDIE EDWARDS", "points": "299", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 24}, {"rank": "12.", "name": "GŁĘBOKA REZERWA", "points": "256", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 22}, {"rank": "13.", "name": "MAGNACKI", "points": "211", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 20}, {"rank": "14.", "name": "JARZĄBEK", "points": "209", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 18}, {"rank": "15.", "name": "GABSON", "points": "170", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 16}, {"rank": "16.", "name": "AGA POLIKARP", "points": "169", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 15}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 0}, {"rank": "1.", "name": "FELEK", "points": "230", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "2.", "name": "GŁĘBOKA REZERWA", "points": "225", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "3.", "name": "GLIXI", "points": "205", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "4.", "name": "MICHAUU", "points": "165", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "5.", "name": "MAGNACKI", "points": "149", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "6.", "name": "GABSON", "points": "124", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "7.", "name": "JARZĄBEK", "points": "112", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "8.", "name": "AGA POLIKARP", "points": "111", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "9.", "name": "ZABIEGA", "points": "100", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}, {"rank": "10.", "name": "ANIA", "points": "78", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 0}], "hills": [{"hill": "SZWAJCARIA K170", "pos1": "FELEK", "pos2": "MATTI NYKANEN", "pos3": "MAGIKDSJ"}, {"hill": "AUSTRIA K70", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "ADAM MAŁYSZ"}, {"hill": "BELGIA K95", "pos1": "FELEK", "pos2": "DOMINHUY", "pos3": "ADAM MAŁYSZ"}, {"hill": "ANGLIA K50", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "DOMINHUY"}, {"hill": "IRLANDIA K125", "pos1": "MICHAUU", "pos2": "ADAM MAŁYSZ", "pos3": "EDDIE EDWARDS"}, {"hill": "WĘGRY K180", "pos1": "MATTI NYKANEN", "pos2": "FELEK", "pos3": "AJZENBIŚLA"}, {"hill": "SZWECJA K140", "pos1": "AJZENBIŚLA", "pos2": "FELEK", "pos3": "ANDRZEJ"}, {"hill": "SŁOWACJA K110", "pos1": "FELEK", "pos2": "DOMINHUY/MATTI NYKANEN", "pos3": "-"}, {"hill": "KANADA K185", "pos1": "MATTI NYKANEN", "pos2": "MAGIKDSJ", "pos3": "ADAM MAŁYSZ"}, {"hill": "SŁOWENIA K250", "pos1": "GLIXI", "pos2": "MATTI NYKANEN", "pos3": "BULOKLEP"}], "records": []}, {"id": 2, "name": "#2 NTWDSJ2.1", "date": "13.11.2025", "standings": [{"rank": "1.", "name": "AJZENBIŚLA", "points": "952", "h1": "5", "h2": "4", "h3": "1", "cup_pts": 100}, {"rank": "2.", "name": "ADAM MAŁYSZ", "points": "881", "h1": "5", "h2": "1", "h3": "2", "cup_pts": 80}, {"rank": "3.", "name": "FELEK", "points": "720", "h1": "1", "h2": "3", "h3": "2", "cup_pts": 60}, {"rank": "4.", "name": "DOMINHUY", "points": "638", "h1": "1", "h2": "1", "h3": "2", "cup_pts": 50}, {"rank": "5.", "name": "MICHAUU", "points": "637", "h1": "0", "h2": "1", "h3": "5", "cup_pts": 45}, {"rank": "6.", "name": "GŁĘBOKA REZERWA", "points": "613", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "EDDIE EDWARDS", "points": "556", "h1": "0", "h2": "1", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "GABSON", "points": "384", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 29}], "hills": [{"hill": "SZWAJCARIA K170", "pos1": "AJZENBIŚLA", "pos2": "GŁĘBOKA REZERWA", "pos3": "ADAM MAŁYSZ"}, {"hill": "CZECHY K135", "pos1": "AJZENBIŚLA", "pos2": "DOMINHUY", "pos3": "MICHAUU"}, {"hill": "BIAŁORUŚ K220", "pos1": "FELEK", "pos2": "MICHAUU", "pos3": "ADAM MAŁYSZ"}, {"hill": "POLSKA K80", "pos1": "GŁĘBOKA REZERWA", "pos2": "EDDIE EDWARDS", "pos3": "MICHAUU, FELEK, AJZENBIŚLA"}, {"hill": "BELGIA K95", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "DOMINHUY"}, {"hill": "IRLANDIA K125", "pos1": "DOMINHUY, ADAM MAŁYSZ", "pos2": "-", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "WŁOCHY K230", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "DANIA K75", "pos1": "AJZENBIŚLA", "pos2": "FELEK", "pos3": "DOMINHUY"}, {"hill": "SŁOWACJA K110", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "LITWA K145", "pos1": "ADAM MAŁYSZ", "pos2": "FELEK; AJZENBIŚLA", "pos3": "-"}, {"hill": "CHINY K205", "pos1": "AJZENBIŚLA", "pos2": "FELEK", "pos3": "MICHAUU"}, {"hill": "HOLANDIA K100", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "FELEK"}], "records": []}, {"id": 3, "name": "#3 NTWDSJ2.1", "date": "20.11.2025", "standings": [{"rank": "1.", "name": "ADAM MAŁYSZ", "points": "902", "h1": "4", "h2": "4", "h3": "1", "cup_pts": 100}, {"rank": "2.", "name": "AJZENBIŚLA", "points": "816", "h1": "3", "h2": "3", "h3": "1", "cup_pts": 80}, {"rank": "3.", "name": "BULOKLEP", "points": "770", "h1": "3", "h2": "1", "h3": "2", "cup_pts": 60}, {"rank": "4.", "name": "ANDRZEJ", "points": "705", "h1": "2", "h2": "1", "h3": "1", "cup_pts": 50}, {"rank": "5.", "name": "MICHAUU", "points": "687", "h1": "0", "h2": "3", "h3": "3", "cup_pts": 45}, {"rank": "6.", "name": "GŁĘBOKA REZERWA", "points": "498", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "EDDIE EDWARDS", "points": "487", "h1": "0", "h2": "0", "h3": "2", "cup_pts": 36}, {"rank": "8.", "name": "MAGNACKI", "points": "424", "h1": "0", "h2": "1", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "AGA POLIKARP", "points": "399", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 26}], "hills": [{"hill": "FINLANDIA K105", "pos1": "ANDRZEJ", "pos2": "MAGNACKI", "pos3": "EDDIE EDWARDS"}, {"hill": "BIAŁORUŚ K220", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "BULOKLEP"}, {"hill": "AUSTRIA K70", "pos1": "BULOKLEP", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "ESTONIA K155", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "IRLANDIA K125", "pos1": "BULOKLEP", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "UKRAINA K60", "pos1": "ADAM MAŁYSZ", "pos2": "ANDRZEJ", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "WĘGRY K180", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "BULOKLEP"}, {"hill": "SŁOWACJA K110", "pos1": "BULOKLEP", "pos2": "ADAM MAŁYSZ; MICHAUU", "pos3": "-"}, {"hill": "KANADA K185", "pos1": "AJZENBIŚLA", "pos2": "BULOKLEP", "pos3": "MICHAUU"}, {"hill": "LITWA K145", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "ANDRZEJ"}, {"hill": "KAZACHSTAN K85", "pos1": "AJZENBIŚLA", "pos2": "MICHAUU", "pos3": "ADAM MAŁYSZ"}, {"hill": "SŁOWENIA K250", "pos1": "ADAM MAŁYSZ", "pos2": "MICHAUU", "pos3": "EDDIE EDWARDS"}], "records": ["IRLANDIA K125 AJZENBIŚLA 137.90"]}, {"id": 4, "name": "#4 NTWDSJ2.1", "date": "27.11.2025", "standings": [{"rank": "1.", "name": "ANDRZEJ", "points": "910", "h1": "5", "h2": "1", "h3": "3", "cup_pts": 100}, {"rank": "2.", "name": "AJZENBIŚLA", "points": "750", "h1": "3", "h2": "2", "h3": "1", "cup_pts": 80}, {"rank": "3.", "name": "MATTI NYKANEN", "points": "738", "h1": "1", "h2": "4", "h3": "2", "cup_pts": 60}, {"rank": "4.", "name": "GŁĘBOKA REZERWA", "points": "710", "h1": "1", "h2": "3", "h3": "1", "cup_pts": 50}, {"rank": "5.", "name": "BULOKLEP", "points": "661", "h1": "2", "h2": "0", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "MICHAUU", "points": "641", "h1": "0", "h2": "2", "h3": "3", "cup_pts": 40}, {"rank": "7.", "name": "DOMINHUY", "points": "493", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 36}, {"rank": "8.", "name": "AGA POLIKARP", "points": "409", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "PAŁLINA", "points": "357", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 26}], "hills": [{"hill": "SZWAJCARIA K170", "pos1": "ANDRZEJ", "pos2": "MATTI NYKANEN", "pos3": "AJZENBIŚLA"}, {"hill": "POLSKA K80", "pos1": "BULOKLEP", "pos2": "GŁĘBOKA REZERWA", "pos3": "MICHAUU"}, {"hill": "ANGLIA K50", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "DOMINHUY"}, {"hill": "ESTONIA K155", "pos1": "MATTI NYKANEN", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "IRLANDIA K125", "pos1": "ANDRZEJ", "pos2": "MATTI NYKANEN", "pos3": "MICHAUU"}, {"hill": "UKRAINA K60", "pos1": "BULOKLEP", "pos2": "MICHAUU", "pos3": "ANDRZEJ"}, {"hill": "WĘGRY K180", "pos1": "AJZENBIŚLA", "pos2": "GŁĘBOKA REZERWA", "pos3": "MATTI NYKANEN"}, {"hill": "LITWA K145", "pos1": "ANDRZEJ", "pos2": "MATTI NYKANEN", "pos3": "MICHAUU"}, {"hill": "CHINY K205", "pos1": "ANDRZEJ", "pos2": "MATTI NYKANEN", "pos3": "BULOKLEP"}, {"hill": "FRANCJA K160", "pos1": "GŁĘBOKA REZERWA", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "HOLANDIA K100", "pos1": "AJZENBIŚLA", "pos2": "GŁĘBOKA REZERWA", "pos3": "MATTI NYKANEN"}, {"hill": "SŁOWENIA K250", "pos1": "ANDRZEJ", "pos2": "MICHAUU", "pos3": "GŁĘBOKA REZERWA"}], "records": ["CHINY K205 ANDRZEJ 239.59"]}, {"id": 5, "name": "#5 NTWDSJ2.1", "date": "04.12.2025", "standings": [{"rank": "1.", "name": "ADAM MAŁYSZ", "points": "778", "h1": "2", "h2": "3", "h3": "3", "cup_pts": 100}, {"rank": "2.", "name": "MATTI NYKANEN", "points": "710", "h1": "2", "h2": "2", "h3": "2", "cup_pts": 80}, {"rank": "3.", "name": "AJZENBIŚLA", "points": "684", "h1": "2", "h2": "1", "h3": "3", "cup_pts": 60}, {"rank": "4.", "name": "MICHAUU", "points": "675", "h1": "3", "h2": "0", "h3": "1", "cup_pts": 50}, {"rank": "5.", "name": "FELEK", "points": "654", "h1": "1", "h2": "3", "h3": "0", "cup_pts": 45}, {"rank": "6.", "name": "BULOKLEP", "points": "620", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "ANDRZEJ", "points": "613", "h1": "1", "h2": "1", "h3": "2", "cup_pts": 36}, {"rank": "8.", "name": "EDDIE EDWARDS", "points": "483", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "GŁĘBOKA REZERWA", "points": "468", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 29}, {"rank": "10.", "name": "GABSON", "points": "321", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 26}, {"rank": "11.", "name": "ANIA", "points": "288", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 24}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 22}], "hills": [{"hill": "SZWAJCARIA K170", "pos1": "MICHAUU", "pos2": "FELEK", "pos3": "ADAM MAŁYSZ"}, {"hill": "BIAŁORUŚ K220", "pos1": "ADAM MAŁYSZ", "pos2": "MATTI NYKANEN", "pos3": "AJZENBIŚLA"}, {"hill": "USA K130", "pos1": "MICHAUU", "pos2": "MATTI NYKANEN", "pos3": "ADAM MAŁYSZ"}, {"hill": "POLSKA K80", "pos1": "MICHAUU, BULOKLEP", "pos2": "-", "pos3": "MATTI NYKANEN"}, {"hill": "NIEMCY K120", "pos1": "EDDIE EDWARDS", "pos2": "AJZENBIŚLA", "pos3": "ADAM MAŁYSZ"}, {"hill": "UKRAINA K60", "pos1": "ADAM MAŁYSZ", "pos2": "FELEK", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "SZWECJA K140", "pos1": "MATTI NYKANEN", "pos2": "ADAM MAŁYSZ", "pos3": "ANDRZEJ"}, {"hill": "WŁOCHY K230", "pos1": "FELEK", "pos2": "ADAM MAŁYSZ", "pos3": "MICHAUU"}, {"hill": "DANIA K75", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "ANDRZEJ"}, {"hill": "SŁOWACJA K110", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "BULKOKLEP, MATTI NYKANEN"}, {"hill": "KAZACHSTAN K85", "pos1": "ANDRZEJ", "pos2": "FELEK", "pos3": "AJZENBIŚLA"}, {"hill": "CHINY K205", "pos1": "MATTI NYKANEN", "pos2": "BULOKLEP", "pos3": "AJZENBIŚLA"}], "records": []}, {"id": 6, "name": "#6 NTWDSJ2.1", "date": "11.12.2025", "standings": [{"rank": "1.", "name": "BULOKLEP", "points": "876", "h1": "5", "h2": "1", "h3": "2", "cup_pts": 100}, {"rank": "2.", "name": "AJZENBIŚLA", "points": "736", "h1": "2", "h2": "2", "h3": "2", "cup_pts": 80}, {"rank": "3.", "name": "MATTI NYKANEN", "points": "722", "h1": "1", "h2": "3", "h3": "2", "cup_pts": 60}, {"rank": "4.", "name": "ANDRZEJ", "points": "716", "h1": "1", "h2": "3", "h3": "3", "cup_pts": 50}, {"rank": "5.", "name": "MICHAUU", "points": "690", "h1": "2", "h2": "2", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "FELEK", "points": "594", "h1": "0", "h2": "1", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "GŁĘBOKA REZERWA", "points": "558", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "AGA POLIKARP", "points": "464", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 29}], "hills": [{"hill": "FINLANDIA K105", "pos1": "MATTI NYKANEN", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "SZWAJCARIA K170", "pos1": "AJZENBIŚLA", "pos2": "MICHAUU", "pos3": "ANDRZEJ"}, {"hill": "AUSTRIA K70", "pos1": "AJZENBIŚLA", "pos2": "BULOKLEP", "pos3": "ANDRZEJ"}, {"hill": "ŁOTWA K165", "pos1": "AGA POLIKARP", "pos2": "MATTI NYKANEN", "pos3": "BULOKLEP"}, {"hill": "BELGIA K95", "pos1": "BULOKLEP", "pos2": "ANDRZEJ", "pos3": "AJZENBIŚLA"}, {"hill": "NIEMCY K120", "pos1": "ANDRZEJ", "pos2": "FELEK", "pos3": "AJZENBIŚLA"}, {"hill": "AUSTRALIA K240", "pos1": "BULOKLEP", "pos2": "ANDRZEJ", "pos3": "MATTI NYKANEN"}, {"hill": "UKRAINA K60", "pos1": "BULOKLEP", "pos2": "ANDRZEJ, NYKANEN", "pos3": "-"}, {"hill": "KANADA K185", "pos1": "BULOKLEP, MICHAUU", "pos2": "-", "pos3": "MATTI NYKANEN"}, {"hill": "LITWA K145", "pos1": "BULOKLEP", "pos2": "MICHAUU", "pos3": "FELEK"}, {"hill": "FRANCJA K160", "pos1": "MICHAUU", "pos2": "AJZENBIŚLA", "pos3": "BULOKLEP"}, {"hill": "SŁOWENIA K250", "pos1": "GŁĘBOKA REZERWA", "pos2": "MATTI NYKANEN", "pos3": "MICHAUU"}], "records": ["SŁOWENIA K250 AJZENBIŚLA 283.16"]}, {"id": 7, "name": "#7 NTWDSJ2.1", "date": "18.12.2025", "standings": [{"rank": "1.", "name": "ADAM MAŁYSZ", "points": "820", "h1": "1", "h2": "5", "h3": "3", "cup_pts": 100}, {"rank": "2.", "name": "AJZENBIŚLA", "points": "771", "h1": "4", "h2": "0", "h3": "1", "cup_pts": 80}, {"rank": "3.", "name": "ANDRZEJ", "points": "742", "h1": "4", "h2": "0", "h3": "1", "cup_pts": 60}, {"rank": "4.", "name": "MATTI NYKANEN", "points": "716", "h1": "2", "h2": "1", "h3": "2", "cup_pts": 50}, {"rank": "5.", "name": "FELEK", "points": "657", "h1": "2", "h2": "1", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "MICHAUU", "points": "582", "h1": "0", "h2": "3", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "GŁĘBOKA REZERWA", "points": "554", "h1": "0", "h2": "2", "h3": "2", "cup_pts": 36}, {"rank": "8.", "name": "BULOKLEP", "points": "464", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "AGA POLIKARP", "points": "400", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "10.", "name": "DAWEK 6CM", "points": "315", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 26}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 24}], "hills": [{"hill": "SZWAJCARIA K170", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "AUSTRIA K70", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "MATTI NYKANEN"}, {"hill": "ŁOTWA K165", "pos1": "AJZENBIŚLA", "pos2": "MICHAUU", "pos3": "ADAM MAŁYSZ"}, {"hill": "POLSKA K80", "pos1": "ADAM MAŁYSZ", "pos2": "GŁĘBOKA REZERWA", "pos3": "ANDRZEJ"}, {"hill": "ISLANDIA K190", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "ESTONIA K155", "pos1": "AJZENBIŚLA", "pos2": "GŁĘBOKA REZERWA", "pos3": "MICHAUU"}, {"hill": "NORWEGIA K90", "pos1": "FELEK", "pos2": "MATTI NYKANEN, ADAM MAŁYSZ", "pos3": "-"}, {"hill": "WĘGRY K180", "pos1": "MATTI NYKANEN", "pos2": "FELEK", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "SZWECJA K140", "pos1": "AJZENBIŚLA", "pos2": "MICHAUU", "pos3": "ADAM MAŁYSZ"}, {"hill": "DANIA K75", "pos1": "FELEK, ANDRZEJ", "pos2": "-", "pos3": "ADAM MAŁYSZ"}, {"hill": "SŁOWACJA K110", "pos1": "MATTI NYKANEN", "pos2": "ADAM MAŁYSZ", "pos3": "FELEK"}, {"hill": "CHINY K205", "pos1": "ANDRZEJ", "pos2": "MICHAUU", "pos3": "MATTI NYKANEN"}], "records": []}, {"id": 8, "name": "Turniej Czterech Skoczni", "date": "08.01.2026", "standings": [{"rank": "1.", "name": "AJZENBIŚLA", "points": "639", "h1": "4", "h2": "2", "h3": "0", "cup_pts": 100}, {"rank": "2.", "name": "ADAM MAŁYSZ", "points": "531", "h1": "3", "h2": "1", "h3": "0", "cup_pts": 80}, {"rank": "3.", "name": "SEWEK", "points": "440", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 60}, {"rank": "4.", "name": "FELEK", "points": "407", "h1": "0", "h2": "2", "h3": "2", "cup_pts": 50}, {"rank": "5.", "name": "ANDRZEJ", "points": "368", "h1": "0", "h2": "1", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "BULOKLEP", "points": "342", "h1": "0", "h2": "1", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "MICHAUU", "points": "318", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "DOMINHUY", "points": "308", "h1": "0", "h2": "0", "h3": "2", "cup_pts": 32}, {"rank": "9.", "name": "GŁĘBOKA REZERWA", "points": "296", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "10.", "name": "EDDIE EDWARDS", "points": "292", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 26}, {"rank": "11.", "name": "QNA", "points": "265", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 24}, {"rank": "12.", "name": "ZABIEGA", "points": "184", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 22}, {"rank": "13.", "name": "GABSON", "points": "164", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 20}, {"rank": "14.", "name": "ANIA", "points": "152", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 18}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 16}], "hills": [{"hill": "FINLANDIA K105", "pos1": "AJZENBIŚLA", "pos2": "FELEK", "pos3": "ANDRZEJ"}, {"hill": "AUSTRIA K70", "pos1": "ADAM MAŁYSZ", "pos2": "ANDRZEJ", "pos3": "DOMINHUY"}, {"hill": "NIEMCY K120", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "DOMINHUY"}, {"hill": "NORWEGIA K90", "pos1": "SEWEK/AJZENBIŚLA", "pos2": "-", "pos3": "BULOKLEP"}, {"hill": "FINLANDIA K105", "pos1": "AJZENBIŚLA", "pos2": "SEWEK", "pos3": "FELEK"}, {"hill": "AUSTRIA K70", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "FELEK"}, {"hill": "NIEMCY K120", "pos1": "MICHAUU", "pos2": "ADAM MAŁYSZ", "pos3": "SEWEK"}, {"hill": "NORWEGIA K90", "pos1": "AJZENBIŚLA", "pos2": "FELEK/BULOKLEP", "pos3": "-"}], "records": []}, {"id": 9, "name": "#9 NTWDSJ2.1", "date": "15.01.2026", "standings": [{"rank": "1.", "name": "ADAM MAŁYSZ", "points": "904", "h1": "4", "h2": "4", "h3": "1", "cup_pts": 100}, {"rank": "2.", "name": "AJZENBIŚLA", "points": "840", "h1": "4", "h2": "1", "h3": "3", "cup_pts": 80}, {"rank": "3.", "name": "DOMINHUY", "points": "684", "h1": "1", "h2": "2", "h3": "2", "cup_pts": 60}, {"rank": "4.", "name": "ANDRZEJ", "points": "630", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 50}, {"rank": "5.", "name": "GŁĘBOKA REZERWA", "points": "618", "h1": "0", "h2": "3", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "BULOKLEP", "points": "573", "h1": "1", "h2": "0", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "MICHAUU", "points": "562", "h1": "1", "h2": "0", "h3": "3", "cup_pts": 36}, {"rank": "8.", "name": "JARZĄBEK", "points": "409", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "EDDIE EDWARDS", "points": "397", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "10.", "name": "MAGNACKI", "points": "327", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 26}, {"rank": "11.", "name": "MAREK MARECKI", "points": "325", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 24}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 22}], "hills": [{"hill": "CZECHY K135", "pos1": "ADAM MAŁYSZ", "pos2": "DOMINHUY", "pos3": "BULOKLEP"}, {"hill": "ŁOTWA K165", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "DOMINHUY"}, {"hill": "JAPONIA K210", "pos1": "MICHAUU", "pos2": "GŁĘBOKA REZERWA", "pos3": "ADAM MAŁYSZ"}, {"hill": "BELGIA K95", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "ANGLIA K50", "pos1": "DOMINHUY", "pos2": "ANDRZEJ", "pos3": "AJZENBIŚLA"}, {"hill": "WĘGRY K180", "pos1": "BULOKLEP", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "WŁOCHY K230", "pos1": "AJZENBIŚLA", "pos2": "AGA POLIKARP", "pos3": "MICHAUU"}, {"hill": "LITWA K145", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "ANDRZEJ"}, {"hill": "KAZACHSTAN K85", "pos1": "ADAM MAŁYSZ", "pos2": "GŁĘBOKA REZERWA", "pos3": "DOMINHUY"}, {"hill": "CHINY K205", "pos1": "ADAM MAŁYSZ", "pos2": "DOMINHUY", "pos3": "AJZENBIŚLA"}, {"hill": "FRANCJA K160", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "HOLANDIA K100", "pos1": "ANDRZEJ", "pos2": "GŁĘBOKA REZERWA", "pos3": "MICHAUU"}], "records": []}, {"id": 10, "name": "Mistrzostwa Świata", "date": "22.01.2026", "standings": [{"rank": "1.", "name": "ANDRZEJ", "points": "707", "h1": "3", "h2": "3", "h3": "0", "cup_pts": 100}, {"rank": "2.", "name": "AJZENBIŚLA", "points": "682", "h1": "3", "h2": "2", "h3": "0", "cup_pts": 80}, {"rank": "3.", "name": "ADAM MAŁYSZ", "points": "660", "h1": "3", "h2": "0", "h3": "3", "cup_pts": 60}, {"rank": "4.", "name": "MATTI NYKANEN", "points": "528", "h1": "0", "h2": "3", "h3": "0", "cup_pts": 50}, {"rank": "5.", "name": "FELEK", "points": "501", "h1": "0", "h2": "2", "h3": "1", "cup_pts": 45}, {"rank": "5.", "name": "MICHAUU", "points": "501", "h1": "1", "h2": "0", "h3": "3", "cup_pts": 40}, {"rank": "7.", "name": "DOMINHUY", "points": "450", "h1": "0", "h2": "0", "h3": "2", "cup_pts": 36}, {"rank": "8.", "name": "EDDIE EDWARDS", "points": "401", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 32}, {"rank": "9.", "name": "MAREK MARECKI", "points": "290", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 26}], "hills": [{"hill": "SZWAJCARIA K170", "pos1": "AJZENBIŚLA", "pos2": "MATTI NYKANEN", "pos3": "MICHAUU"}, {"hill": "BIAŁORUŚ K220", "pos1": "ADAM MAŁYSZ", "pos2": "FELEK", "pos3": "EDDIE EDWARDS"}, {"hill": "JAPONIA K210", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "ADAM MAŁYSZ"}, {"hill": "ISLANDIA K190", "pos1": "ADAM MAŁYSZ", "pos2": "ANDRZEJ", "pos3": "DOMINHUY"}, {"hill": "AUSTRALIA K240", "pos1": "MICHAUU", "pos2": "ANDRZEJ", "pos3": "DOMINHUY"}, {"hill": "WĘGRY K180", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "FELEK"}, {"hill": "WŁOCHY K230", "pos1": "ADAM MAŁYSZ", "pos2": "ANDRZEJ", "pos3": "MICHAUU"}, {"hill": "KANADA K185", "pos1": "ANDRZEJ", "pos2": "FELEK", "pos3": "ADAM MAŁYSZ"}, {"hill": "CHINY K205", "pos1": "AJZENBIŚLA", "pos2": "MATTI NYKANEN", "pos3": "ADAM MAŁYSZ"}, {"hill": "SŁOWENIA K250", "pos1": "AJZENBIŚLA", "pos2": "MATTI NYKANEN", "pos3": "MICHAUU"}], "records": []}, {"id": 11, "name": "Polish Tour", "date": "29.01.2026", "standings": [{"rank": "1.", "name": "ANDRZEJ", "points": "865", "h1": "3", "h2": "4", "h3": "1", "cup_pts": 100}, {"rank": "2.", "name": "AJZENBIŚLA", "points": "835", "h1": "5", "h2": "0", "h3": "1", "cup_pts": 80}, {"rank": "3.", "name": "ADAM MAŁYSZ", "points": "800", "h1": "2", "h2": "4", "h3": "3", "cup_pts": 60}, {"rank": "4.", "name": "MICHAUU", "points": "750", "h1": "1", "h2": "1", "h3": "5", "cup_pts": 50}, {"rank": "5.", "name": "JARZĄBEK", "points": "628", "h1": "1", "h2": "2", "h3": "0", "cup_pts": 45}, {"rank": "6.", "name": "GŁĘBOKA REZERWA", "points": "583", "h1": "0", "h2": "1", "h3": "2", "cup_pts": 40}, {"rank": "7.", "name": "MAREK MARECKI", "points": "471", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 36}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 32}], "hills": [{"hill": "POLSKA K80", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "ZAKOPANE 1 K120", "pos1": "ADAM MAŁYSZ", "pos2": "JARZĄBEK", "pos3": "MICHAUU"}, {"hill": "ZAKOPANE 2 K65", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "MICHAUU"}, {"hill": "KARPACZ K85", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "ADAM MAŁYSZ"}, {"hill": "WISŁA K105", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "MICHAUU"}, {"hill": "SZCZYRK K85", "pos1": "JARZĄBEK", "pos2": "MICHAUU", "pos3": "ADAM MAŁYSZ"}, {"hill": "POLSKA K80", "pos1": "ANDRZEJ", "pos2": "JARZĄBEK", "pos3": "MICHAUU"}, {"hill": "ZAKOPANE 1 K120", "pos1": "MICHAUU", "pos2": "ANDRZEJ", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "ZAKOPANE 2 K65", "pos1": "ADAM MAŁYSZ", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "KARPACZ K85", "pos1": "ANDRZEJ", "pos2": "GŁĘBOKA REZERWA", "pos3": "ADAM MAŁYSZ"}, {"hill": "WISŁA K105", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "ANDRZEJ"}, {"hill": "SZCZYRK K85", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "MICHAUU"}], "records": []}, {"id": 12, "name": "#12 NTWDSJ2.1", "date": "05.02.2026", "standings": [{"rank": "1.", "name": "ADAM MAŁYSZ", "points": "796", "h1": "2", "h2": "3", "h3": "2", "cup_pts": 100}, {"rank": "2.", "name": "ANDRZEJ", "points": "750", "h1": "3", "h2": "1", "h3": "2", "cup_pts": 80}, {"rank": "3.", "name": "AJZENBIŚLA", "points": "737", "h1": "2", "h2": "2", "h3": "3", "cup_pts": 60}, {"rank": "4.", "name": "DOMINHUY", "points": "721", "h1": "1", "h2": "5", "h3": "0", "cup_pts": 50}, {"rank": "5.", "name": "FELEK", "points": "671", "h1": "2", "h2": "2", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "MATTI NYKANEN", "points": "585", "h1": "1", "h2": "0", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "MICHAUU", "points": "484", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 36}, {"rank": "8.", "name": "GŁĘBOKA REZERWA", "points": "484", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "ROBERTO CECON", "points": "364", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "10.", "name": "ZABIEGA", "points": "357", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 26}, {"rank": "11.", "name": "GABSON", "points": "315", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 24}, {"rank": "12.", "name": "MAREK MARECKI", "points": "292", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 22}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 20}], "hills": [{"hill": "FINLANDIA K105", "pos1": "ADAM MAŁYSZ", "pos2": "DOMINHUY", "pos3": "ZABIEGA"}, {"hill": "ŁOTWA K165", "pos1": "ANDRZEJ", "pos2": "DOMINHUY", "pos3": "ADAM MAŁYSZ"}, {"hill": "POLSKA K80", "pos1": "ANDRZEJ", "pos2": "DOMINHUY", "pos3": "MICHAUU"}, {"hill": "JAPONIA K210", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "MATTI NYKANEN"}, {"hill": "ISLANDIA K190", "pos1": "MATTI NYKANEN", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "ESTONIA K155", "pos1": "AJZENBIŚLA", "pos2": "DOMINHUY", "pos3": "ADAM MAŁYSZ"}, {"hill": "AUSTRALIA K240", "pos1": "FELEK", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "UKRAINA K60", "pos1": "FELEK", "pos2": "DOMINHUY", "pos3": "AJZENBIŚLA"}, {"hill": "DANIA K75", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "FELEK"}, {"hill": "SŁOWACJA K110", "pos1": "DOMINHUY", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "KANADA K185", "pos1": "GŁĘBOKA REZERWA", "pos2": "FELEK", "pos3": "ANDRZEJ"}, {"hill": "KOREA K150", "pos1": "ADAM MAŁYSZ", "pos2": "FELEK / AJZENBIŚLA", "pos3": "-"}], "records": []}, {"id": 13, "name": "Igrzyska Olimpijskie", "date": "12.02.2026", "standings": [{"rank": "1.", "name": "ANDRZEJ", "points": "782", "h1": "4", "h2": "0", "h3": "3", "cup_pts": 100}, {"rank": "2.", "name": "ADAM MAŁYSZ", "points": "775", "h1": "3", "h2": "1", "h3": "2", "cup_pts": 80}, {"rank": "3.", "name": "AJZENBIŚLA", "points": "768", "h1": "1", "h2": "4", "h3": "3", "cup_pts": 60}, {"rank": "4.", "name": "MATTI NYKANEN", "points": "643", "h1": "2", "h2": "1", "h3": "1", "cup_pts": 50}, {"rank": "5.", "name": "MICHAUU", "points": "589", "h1": "1", "h2": "1", "h3": "0", "cup_pts": 45}, {"rank": "6.", "name": "BULOKLEP", "points": "572", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "FELEK", "points": "527", "h1": "0", "h2": "2", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "EDDIE EDWARDS", "points": "518", "h1": "0", "h2": "2", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "GŁĘBOKA REZERWA", "points": "490", "h1": "0", "h2": "0", "h3": "2", "cup_pts": 29}, {"rank": "10.", "name": "ANIA", "points": "312", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 26}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 24}], "hills": [{"hill": "FINLANDIA K105", "pos1": "ANDRZEJ", "pos2": "MICHAUU", "pos3": "MATTI NYKANEN"}, {"hill": "CZECHY K135", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "ADAM MAŁYSZ"}, {"hill": "USA K130", "pos1": "ADAM MAŁYSZ", "pos2": "FELEK", "pos3": "AJZENBIŚLA"}, {"hill": "BELGIA K95", "pos1": "ADAM MAŁYSZ", "pos2": "FELEK", "pos3": "ANDRZEJ"}, {"hill": "NORWEGIA K90", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "BULOKLEP"}, {"hill": "WĘGRY K180", "pos1": "MICHAUU", "pos2": "MATTI NYKANEN", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "WŁOCHY K230", "pos1": "MATTI NYKANEN", "pos2": "EDDIE EDWARDS", "pos3": "AJZENBIŚLA"}, {"hill": "SŁOWACJA K110", "pos1": "ANDRZEJ", "pos2": "BULOKLEP", "pos3": "AJZENBIŚLA"}, {"hill": "KANADA K185", "pos1": "AJZENBIŚLA", "pos2": "EDDIE EDWARDS", "pos3": "ANDRZEJ"}, {"hill": "KAZACHSTAN K85", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "KOREA K150", "pos1": "MATTI NYKANEN", "pos2": "AJZENBIŚLA", "pos3": "ADAM MAŁYSZ"}, {"hill": "SŁOWENIA K250", "pos1": "BULOKLEP", "pos2": "ADAM MAŁYSZ", "pos3": "GŁĘBOKA REZERWA"}], "records": []}, {"id": 14, "name": "#13 NTWDSJ2.1", "date": "19.02.2026", "standings": [{"rank": "1.", "name": "MATTI NYKANEN", "points": "870", "h1": "3", "h2": "3", "h3": "4", "cup_pts": 100}, {"rank": "2.", "name": "ANDRZEJ", "points": "845", "h1": "3", "h2": "3", "h3": "2", "cup_pts": 80}, {"rank": "3.", "name": "AJZENBIŚLA", "points": "766", "h1": "3", "h2": "2", "h3": "0", "cup_pts": 60}, {"rank": "4.", "name": "MICHAUU", "points": "736", "h1": "2", "h2": "1", "h3": "3", "cup_pts": 50}, {"rank": "5.", "name": "EDDIE EDWARDS", "points": "680", "h1": "1", "h2": "2", "h3": "2", "cup_pts": 45}, {"rank": "6.", "name": "FELEK", "points": "572", "h1": "0", "h2": "1", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "MAGNACKI", "points": "463", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 36}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 32}], "hills": [{"hill": "CZECHY K135", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "MATTI NYKANEN"}, {"hill": "BIAŁORUŚ K220", "pos1": "AJZENBIŚLA", "pos2": "EDDIE EDWARDS", "pos3": "MATTI NYKANEN"}, {"hill": "ŁOTWA K165", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "MATTI NYKANEN"}, {"hill": "ISLANDIA K190", "pos1": "MATTI NYKANEN", "pos2": "AJZENBIŚLA", "pos3": "EDDIE EDWARDS"}, {"hill": "ANGLIA K50", "pos1": "AJZENBIŚLA", "pos2": "ANDRZEJ", "pos3": "MICHAUU"}, {"hill": "ESTONIA K155", "pos1": "MICHAUU", "pos2": "MATTI NYKANEN", "pos3": "ANDRZEJ"}, {"hill": "WŁOCHY K230", "pos1": "MICHAUU", "pos2": "EDDIE EDWARDS", "pos3": "ANDRZEJ"}, {"hill": "DANIA K75", "pos1": "EDDIE EDWARDS", "pos2": "MICHAUU", "pos3": "MATTI NYKANEN"}, {"hill": "KAZACHSTAN K85", "pos1": "ANDRZEJ", "pos2": "MATTI NYKANEN", "pos3": "MICHAUU"}, {"hill": "FRANCJA K160", "pos1": "MATTI NYKANEN", "pos2": "FELEK", "pos3": "EDDIE EDWARDS"}, {"hill": "HOLANDIA K100", "pos1": "ANDRZEJ", "pos2": "MATTI NYKANEN", "pos3": "MICHAUU"}, {"hill": "SŁOWENIA K250", "pos1": "MATTI NYKANEN", "pos2": "ANDRZEJ", "pos3": "FELEK"}], "records": []}, {"id": 15, "name": "#14 NTWDSJ2.1", "date": "26.02.2026", "standings": [{"rank": "1.", "name": "AJZENBIŚLA", "points": "902", "h1": "3", "h2": "6", "h3": "1", "cup_pts": 100}, {"rank": "2.", "name": "ADAM MAŁYSZ", "points": "896", "h1": "5", "h2": "2", "h3": "1", "cup_pts": 80}, {"rank": "3.", "name": "GŁĘBOKA REZERWA", "points": "642", "h1": "1", "h2": "1", "h3": "3", "cup_pts": 60}, {"rank": "4.", "name": "MICHAUU", "points": "622", "h1": "0", "h2": "1", "h3": "3", "cup_pts": 50}, {"rank": "5.", "name": "ANDRZEJ", "points": "602", "h1": "1", "h2": "0", "h3": "2", "cup_pts": 45}, {"rank": "6.", "name": "MATTI NYKANEN", "points": "599", "h1": "2", "h2": "0", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "JARZĄBEK", "points": "544", "h1": "1", "h2": "0", "h3": "1", "cup_pts": 36}, {"rank": "8.", "name": "MAREK MARECKI", "points": "411", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "MAGNACKI", "points": "394", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "10.", "name": "GABSON", "points": "388", "h1": "0", "h2": "1", "h3": "0", "cup_pts": 26}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 24}], "hills": [{"hill": "USA K130", "pos1": "AJZENBIŚLA", "pos2": "GŁĘBOKA REZERWA", "pos3": "MATTI NYKANEN"}, {"hill": "POLSKA K80", "pos1": "JARZĄBEK", "pos2": "GABSON", "pos3": "ANDRZEJ"}, {"hill": "JAPONIA K210", "pos1": "MATTI NYKANEN", "pos2": "AJZENBIŚLA", "pos3": "ADAM MAŁYSZ"}, {"hill": "BELGIA K95", "pos1": "GŁĘBOKA REZERWA", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "NIEMCY K120", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "WĘGRY K180", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "WŁOCHY K230", "pos1": "ANDRZEJ", "pos2": "MICHAUU", "pos3": "AJZENBIŚLA"}, {"hill": "SŁOWACJA K110", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "KAZACHSTAN K85", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "FRANCJA K160", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "HOLANDIA K100", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "MICHAUU"}, {"hill": "SŁOWENIA K250", "pos1": "MATTI NYKANEN, ADAM MAŁYSZ", "pos2": "-", "pos3": "JARZĄBEK"}], "records": []}, {"id": 16, "name": "#15 NTWDSJ2.1", "date": "05.03.2026", "standings": [{"rank": "1.", "name": "ADAM MAŁYSZ", "points": "934", "h1": "6", "h2": "2", "h3": "0", "cup_pts": 100}, {"rank": "2.", "name": "MATTI NYKANEN", "points": "791", "h1": "2", "h2": "4", "h3": "0", "cup_pts": 80}, {"rank": "3.", "name": "AJZENBIŚLA", "points": "745", "h1": "2", "h2": "0", "h3": "6", "cup_pts": 60}, {"rank": "4.", "name": "BULOKLEP", "points": "616", "h1": "0", "h2": "2", "h3": "1", "cup_pts": 50}, {"rank": "5.", "name": "ANDRZEJ", "points": "609", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 45}, {"rank": "6.", "name": "MICHAUU", "points": "520", "h1": "1", "h2": "1", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "EDDIE EDWARDS", "points": "511", "h1": "0", "h2": "2", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "GŁĘBOKA REZERWA", "points": "481", "h1": "0", "h2": "0", "h3": "2", "cup_pts": 32}, {"rank": "9.", "name": "JARZĄBEK", "points": "420", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "10.", "name": "MAGNACKI", "points": "317", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 26}, {"rank": "11.", "name": "MAREK MARECKI", "points": "312", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 24}, {"rank": "12.", "name": "GABSON", "points": "279", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 22}, {"rank": "13.", "name": "DAWEK 6CM", "points": "268", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 20}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 18}], "hills": [{"hill": "SZWAJCARIA K170", "pos1": "ADAM MAŁYSZ", "pos2": "BULOKLEP", "pos3": "AJZENBIŚLA"}, {"hill": "BIAŁORUŚ K220", "pos1": "ADAM MAŁYSZ", "pos2": "MATTI NYKANEN", "pos3": "AJZENBIŚLA"}, {"hill": "POLSKA K80", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "MICHAUU"}, {"hill": "BELGIA K95", "pos1": "ADAM MAŁYSZ", "pos2": "EDDIE EDWARDS", "pos3": "AJZENBIŚLA"}, {"hill": "ISLANDIA K190", "pos1": "MATTI NYKANEN", "pos2": "ANDRZEJ", "pos3": "AJZENBIŚLA"}, {"hill": "NIEMCY K120", "pos1": "ANDRZEJ", "pos2": "MATTI NYKANEN", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "ESTONIA K155", "pos1": "ADAM MAŁYSZ", "pos2": "MATTI NYKANEN", "pos3": "BULOKLEP"}, {"hill": "NORWEGIA K90", "pos1": "AJZENBIŚLA", "pos2": "MICHAUU", "pos3": "GŁĘBOKA REZERWA"}, {"hill": "AUSTRALIA K240", "pos1": "ADAM MAŁYSZ", "pos2": "EDDIE EDWARDS", "pos3": "AJZENBIŚLA"}, {"hill": "UKRAINA K60", "pos1": "MATTI NYKANEN", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "LITWA K145", "pos1": "ADAM MAŁYSZ", "pos2": "MATTI NYKANEN", "pos3": "ANDRZEJ"}, {"hill": "FRANCJA K160", "pos1": "MICHAUU", "pos2": "BULOKLEP", "pos3": "-"}], "records": []}, {"id": 17, "name": "#16 NTWDSJ2.1", "date": "12.03.2026", "standings": [{"rank": "1.", "name": "ANDRZEJ", "points": "881", "h1": "4", "h2": "2", "h3": "4", "cup_pts": 100}, {"rank": "2.", "name": "ADAM MAŁYSZ", "points": "870", "h1": "3", "h2": "4", "h3": "2", "cup_pts": 80}, {"rank": "3.", "name": "AJZENBIŚLA", "points": "815", "h1": "3", "h2": "2", "h3": "2", "cup_pts": 60}, {"rank": "4.", "name": "BULOKLEP", "points": "690", "h1": "1", "h2": "1", "h3": "3", "cup_pts": 50}, {"rank": "5.", "name": "EDDIE EDWARDS", "points": "629", "h1": "1", "h2": "2", "h3": "0", "cup_pts": 45}, {"rank": "6.", "name": "JARZĄBEK", "points": "571", "h1": "1", "h2": "0", "h3": "1", "cup_pts": 40}, {"rank": "7.", "name": "MAREK MARECKI", "points": "496", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "ANIA", "points": "384", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 29}], "hills": [{"hill": "FINLANDIA K105", "pos1": "ANDRZEJ, AJZENBIŚLA", "pos2": "-", "pos3": "BULOKLEP"}, {"hill": "CZECHY K135", "pos1": "JARZĄBEK", "pos2": "ANDRZEJ", "pos3": "ADAM MAŁYSZ"}, {"hill": "BIAŁORUŚ K220", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "AJZENBIŚLA"}, {"hill": "AUSTRIA K70", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "JARZĄBEK"}, {"hill": "USA K130", "pos1": "AJZENBIŚLA", "pos2": "BULOKLEP", "pos3": "ANDRZEJ"}, {"hill": "JAPONIA K210", "pos1": "EDDIE EDWARDS", "pos2": "ADAM MAŁYSZ", "pos3": "BULOKLEP"}, {"hill": "ANGLIA K50", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "ANDRZEJ"}, {"hill": "NORWEGIA K90", "pos1": "BULOKLEP", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "AUSTRALIA K240", "pos1": "ANDRZEJ", "pos2": "EDDIE EDWARDS", "pos3": "ADAM MAŁYSZ"}, {"hill": "SZWECJA K140", "pos1": "ADAM MAŁYSZ", "pos2": "ANDRZEJ", "pos3": "AJZENBIŚLA"}, {"hill": "SŁOWACJA K110", "pos1": "ADAM MAŁYSZ", "pos2": "EDDIE EDWARDS", "pos3": "ANDRZEJ"}, {"hill": "KANADA K185", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "BULOKLEP"}], "records": []}, {"id": 18, "name": "#17 NTWDSJ2.1", "date": "19.03.2026", "standings": [{"rank": "1.", "name": "AJZENBIŚLA", "points": "861", "h1": "3", "h2": "4", "h3": "2", "cup_pts": 100}, {"rank": "2.", "name": "ANDRZEJ", "points": "794", "h1": "3", "h2": "3", "h3": "1", "cup_pts": 80}, {"rank": "3.", "name": "ADAM MAŁYSZ", "points": "740", "h1": "3", "h2": "2", "h3": "0", "cup_pts": 60}, {"rank": "4.", "name": "MAGIKDSJ", "points": "617", "h1": "0", "h2": "1", "h3": "3", "cup_pts": 50}, {"rank": "5.", "name": "FELEK", "points": "543", "h1": "0", "h2": "1", "h3": "2", "cup_pts": 45}, {"rank": "6.", "name": "MICHAUU", "points": "533", "h1": "0", "h2": "1", "h3": "3", "cup_pts": 40}, {"rank": "7.", "name": "EDDIE EDWARDS", "points": "531", "h1": "2", "h2": "0", "h3": "0", "cup_pts": 36}, {"rank": "8.", "name": "MATTI NYKANEN", "points": "478", "h1": "1", "h2": "0", "h3": "0", "cup_pts": 32}, {"rank": "9.", "name": "JARZĄBEK", "points": "379", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 29}, {"rank": "10.", "name": "DOMINHUY", "points": "374", "h1": "0", "h2": "0", "h3": "1", "cup_pts": 26}, {"rank": "11.", "name": "MAREK MARECKI", "points": "306", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 24}, {"rank": "12.", "name": "MICHAŁ PENA", "points": "300", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 22}, {"rank": "13.", "name": "GABSON", "points": "298", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 20}, {"rank": "14.", "name": "DAWEK 6CM", "points": "250", "h1": "0", "h2": "0", "h3": "0", "cup_pts": 18}, {"rank": "PLACE", "name": "NAME", "points": "POINTS", "h1": "1", "h2": "2", "h3": "3", "cup_pts": 16}], "hills": [{"hill": "USA K130", "pos1": "EDDIE EDWARDS", "pos2": "FELEK", "pos3": "AJZENBIŚLA"}, {"hill": "JAPONIA K210", "pos1": "ADAM MAŁYSZ", "pos2": "ANDRZEJ", "pos3": "AJZENBIŚLA"}, {"hill": "ISLANDIA K190", "pos1": "ADAM MAŁYSZ", "pos2": "ANDRZEJ", "pos3": "MAGIKDSJ"}, {"hill": "ANGLIA K50", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}, {"hill": "NIEMCY K120", "pos1": "AJZENBIŚLA", "pos2": "MICHAUU", "pos3": "FELEK"}, {"hill": "NORWEGIA K90", "pos1": "MATTI NYKANEN", "pos2": "AJZENBIŚLA", "pos3": "ANDRZEJ"}, {"hill": "AUSTRALIA K240", "pos1": "ANDRZEJ", "pos2": "ADAM MAŁYSZ", "pos3": "DOMINHUY"}, {"hill": "SZWECJA K140", "pos1": "AJZENBIŚLA", "pos2": "ADAM MAŁYSZ", "pos3": "MAGIKDSJ"}, {"hill": "DANIA K75", "pos1": "AJZENBIŚLA", "pos2": "MAGIKDSJ", "pos3": "FELEK"}, {"hill": "CHINY K205", "pos1": "EDDIE EDWARDS", "pos2": "ANDRZEJ", "pos3": "MICHAUU"}, {"hill": "HOLANDIA K100", "pos1": "ANDRZEJ", "pos2": "AJZENBIŚLA", "pos3": "MAGIKDSJ"}, {"hill": "KOREA K150", "pos1": "ADAM MAŁYSZ", "pos2": "AJZENBIŚLA", "pos3": "MICHAUU"}], "records": ["CHINY K205 MICHAUU 242.42m"]}], "tcs": [{"rank": "1.", "name": "AJZENBIŚLA", "h1": "237.3 / 246.3", "h2": "265.5 / 268", "h3": "262.2 / 250.3", "h4": "243 / 256", "total": "2028.6", "loss": "0.0"}, {"rank": "2.", "name": "ADAM MAŁYSZ", "h1": "231.3 / 239.1", "h2": "268.5 / 272.5", "h3": "264.7 / 259.10000000000002", "h4": "236.5 / 237.5", "total": "2009.2", "loss": "-19.4"}, {"rank": "3.", "name": "SEWEK", "h1": "231.6 / 245.3", "h2": "256.5 / 260", "h3": "250.1 / 257.5", "h4": "243 / 250.5", "total": "1994.5", "loss": "-34.1"}, {"rank": "4.", "name": "ANDRZEJ", "h1": "235.6 / 242.4", "h2": "268 / 265", "h3": "256.7 / 251.3", "h4": "234.5 / 232.5", "total": "1986.0", "loss": "-42.6"}, {"rank": "5.", "name": "DOMINHUY", "h1": "226 / 229.1", "h2": "266 / 261", "h3": "257.10000000000002 / 247.2", "h4": "235.5 / 245.5", "total": "1967.4", "loss": "-61.2"}, {"rank": "6.", "name": "FELEK", "h1": "236.6 / 243.6", "h2": "235 / 266.5", "h3": "251.8 / 243.5", "h4": "238 / 251", "total": "1966.0", "loss": "-62.6"}, {"rank": "7.", "name": "GŁĘBOKA REZERWA", "h1": "231 / 236.1", "h2": "259 / 250", "h3": "255.6 / 252.9", "h4": "231.5 / 244", "total": "1960.1", "loss": "-68.5"}, {"rank": "8.", "name": "BULOKLEP", "h1": "207.6 / 242.8", "h2": "247 / 260", "h3": "247.6 / 252.1", "h4": "240.5 / 251", "total": "1948.6", "loss": "-80.0"}, {"rank": "9.", "name": "EDDIE EDWARDS", "h1": "226.6 / 233.3", "h2": "244.5 / 265.5", "h3": "227.5 / 251.8", "h4": "239 / 249", "total": "1937.2", "loss": "-91.4"}, {"rank": "10.", "name": "MICHAUU", "h1": "218.8 / 217.8", "h2": "258.5 / 257", "h3": "252.8 / 260.2", "h4": "217.5 / 245.5", "total": "1928.1", "loss": "-100.5"}, {"rank": "11.", "name": "QNA", "h1": "226.8 / 232.8", "h2": "249.5 / 261.5", "h3": "229.3 / 257", "h4": "217 / 244", "total": "1917.9", "loss": "-110.7"}, {"rank": "12.", "name": "ZABIEGA", "h1": "229.1 / 231.1", "h2": "205.5 / 22.5", "h3": "217.5 / 237.4", "h4": "210 / 209", "total": "1562.1", "loss": "-466.5"}, {"rank": "13.", "name": "GABSON", "h1": "177 / -26", "h2": "226.5 / 204.5", "h3": "218.1 / 245.3", "h4": "104.5 / 174.5", "total": "1324.4", "loss": "-704.2"}, {"rank": "14.", "name": "ANIA", "h1": "184.1 / -3.1", "h2": "170 / 109", "h3": "-23.5 / -32.1", "h4": "84.5 / 201", "total": "689.9", "loss": "-1338.7"}], "io_normal": [{"r_num": 1, "rank": "1.", "name": "AJZENBIŚLA", "points": "263", "h1": "1", "h2": "0", "h3": "1"}, {"r_num": 2, "rank": "2.", "name": "ADAM MAŁYSZ", "points": "256", "h1": "0", "h2": "1", "h3": "1"}, {"r_num": 3, "rank": "3.", "name": "ANDRZEJ", "points": "347", "h1": "2", "h2": "1", "h3": "0"}, {"r_num": 4, "rank": "4.", "name": "AGA POLIKARP", "points": "198", "h1": "1", "h2": "0", "h3": "0"}, {"r_num": 5, "rank": "5.", "name": "BULOKLEP", "points": "350", "h1": "1", "h2": "1", "h3": "2"}, {"r_num": 6, "rank": "6.", "name": "MICHAUU", "points": "197", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 7, "rank": "7.", "name": "MATTI NYKANEN", "points": "166", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 8, "rank": "8.", "name": "EDDIE EDWARDS", "points": "223", "h1": "0", "h2": "1", "h3": "0"}, {"r_num": 9, "rank": "9.", "name": "GŁĘBOKA REZERWA", "points": "180", "h1": "0", "h2": "0", "h3": "1"}, {"r_num": 10, "rank": "10.", "name": "SEWEK", "points": "185", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 11, "rank": "11.", "name": "DOMINHUY", "points": "213", "h1": "0", "h2": "1", "h3": "0"}, {"r_num": 12, "rank": "12.", "name": "MAREK MARECKI", "points": "136", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 13, "rank": "13.", "name": "SZYMEK", "points": "120", "h1": "0", "h2": "0", "h3": "0"}], "io_large": [{"r_num": 1, "rank": "1.", "name": "AJZENBIŚLA", "points": "-", "h1": "1", "h2": "2", "h3": "0"}, {"r_num": 2, "rank": "2.", "name": "ADAM MAŁYSZ", "points": "-", "h1": "1", "h2": "0", "h3": "0"}, {"r_num": 3, "rank": "3.", "name": "ANDRZEJ", "points": "-", "h1": "0", "h2": "2", "h3": "1"}, {"r_num": 4, "rank": "4.", "name": "AGA POLIKARP", "points": "-", "h1": "0", "h2": "0", "h3": "1"}, {"r_num": 5, "rank": "5.", "name": "BULOKLEP", "points": "-", "h1": "0", "h2": "0", "h3": "1"}, {"r_num": 6, "rank": "6.", "name": "MATTI NYKANEN", "points": "-", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 7, "rank": "7.", "name": "GŁĘBOKA REZERWA", "points": "-", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 8, "rank": "8.", "name": "DOMINHUY", "points": "-", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 9, "rank": "9.", "name": "MICHAUU", "points": "-", "h1": "1", "h2": "1", "h3": "1"}, {"r_num": 10, "rank": "10.", "name": "EDDIE EDWARDS", "points": "-", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 11, "rank": "11.", "name": "SEWEK", "points": "-", "h1": "2", "h2": "0", "h3": "1"}, {"r_num": 12, "rank": "12.", "name": "MAREK MARECKI", "points": "-", "h1": "0", "h2": "0", "h3": "0"}, {"r_num": 13, "rank": "13.", "name": "SZYMEK", "points": "-", "h1": "0", "h2": "0", "h3": "0"}], "records": [{"hill": "FINLANDIA K105", "holder": "DOMIN", "dist": "115.52m", "date": "13.12.2022"}, {"hill": "SZWAJCARIA K170", "holder": "AJZENBIŚLA", "dist": "204.33m", "date": "10.05.2024 (LGP)"}, {"hill": "CZECHY K135", "holder": "AJZENBIŚLA", "dist": "152.03m", "date": "17.12.2024"}, {"hill": "BIAŁORUŚ K220", "holder": "ADAM MAŁYSZ", "dist": "261.72m", "date": "10.01.2023"}, {"hill": "AUSTRIA K70", "holder": "DOMIN", "dist": "82.17m", "date": "15.11.2022"}, {"hill": "USA K130", "holder": "ANDRZEJ", "dist": "161.76m", "date": "22.02.2022"}, {"hill": "ŁOTWA K165", "holder": "SEWEK", "dist": "188.15m", "date": "26.11.2024"}, {"hill": "POLSKA K80", "holder": "ADAM MAŁYSZ", "dist": "91.60m", "date": "20.02.2024"}, {"hill": "JAPONIA K210", "holder": "FELEK", "dist": "232.02m", "date": "19.09.2023"}, {"hill": "BELGIA K95", "holder": "ANDRZEJ", "dist": "121.86m", "date": "25.03.2025"}, {"hill": "ISLANDIA K190", "holder": "GRZYWA", "dist": "208.02m", "date": "21.03.2023"}, {"hill": "ANGLIA K50", "holder": "DOMIN", "dist": "60.31m", "date": "04.01.2022"}, {"hill": "NIEMCY K120", "holder": "FELEK", "dist": "133.19m", "date": "07.01.2025"}, {"hill": "ESTONIA K155", "holder": "MARCIN WOŹNIAK", "dist": "178.33m", "date": "29.11.2022"}, {"hill": "NORWEGIA K90", "holder": "DOMIN", "dist": "101.78m", "date": "04.01.2022"}, {"hill": "AUSTRALIA K240", "holder": "DOMIN", "dist": "291.24m", "date": "04.01.2022"}, {"hill": "IRLANDIA K125", "holder": "AJZENBIŚLA", "dist": "137.90m", "date": "20.11.2025"}, {"hill": "UKRAINA K60", "holder": "MAGIKDSJ", "dist": "70.43m", "date": "04.03.2025"}, {"hill": "WĘGRY K180", "holder": "AJZENBIŚLA", "dist": "222.10m", "date": "25.02.2025"}, {"hill": "SZWECJA K150", "holder": "FASOL", "dist": "159.30m", "date": "26.03.2024"}, {"hill": "WŁOCHY K230", "holder": "AJZENBIŚLA", "dist": "252.14m", "date": "17.12.2024"}, {"hill": "DANIA K75", "holder": "BULOKLEP", "dist": "91.67m", "date": "18.03.2025"}, {"hill": "SŁOWACJA K110", "holder": "AJZENBIŚLA", "dist": "128.52m", "date": "16.07.2024"}, {"hill": "KANADA K185", "holder": "EDDIE EDWARDS", "dist": "202.31m", "date": "29.10.2024"}, {"hill": "LITWA K145", "holder": "DOMIN", "dist": "164.37m", "date": "22.03.2024"}, {"hill": "KAZACHSTAN K85", "holder": "ANDRZEJ", "dist": "102.19m", "date": "04.03.2025; 12.11.2024"}, {"hill": "CHINY K205", "holder": "MICHAUU", "dist": "242.42m", "date": "26.03.2026; 27.11.2025; 14.02.2023"}, {"hill": "FRANCJA K160", "holder": "FASOL", "dist": "175.79m", "date": "21.02.2023"}, {"hill": "HOLANDIA K100", "holder": "AJZENBIŚLA", "dist": "121.30m", "date": "06.08.2024"}, {"hill": "ROSJA K200", "holder": "RATAJ", "dist": "224.35m", "date": "07.12.2021"}, {"hill": "KOREA K140", "holder": "ANDRZEJ", "dist": "172.45m", "date": "26.03.2024"}, {"hill": "SŁOWENIA K250", "holder": "AJZENBIŚLA", "dist": "283.16m", "date": "11.12.2025; 30.01.2024"}, {"hill": "ZAKOPANE 1 K120", "holder": "ANDRZEJ", "dist": "131.42m", "date": "14.02.2023"}, {"hill": "ZAKOPANE 2 K65", "holder": "BULOKLEP", "dist": "74.65m", "date": "23.07.2024"}, {"hill": "KARPACZ K85", "holder": "FELEK", "dist": "95.54m", "date": "-"}, {"hill": "WISŁA K105", "holder": "SEWEK", "dist": "115.94m", "date": "16.01.2024"}, {"hill": "SZCZYRK K85", "holder": "AJZENBIŚLA", "dist": "96.80m", "date": "03.12.2024"}]};
+
+    // Dummy Jumpers Data for Archival Seasons
+    const legacySeasonResults = {
+      2025: [
+        { rank: 1, name: "JANUSZ WIELKOPOLSKI", jump1: "128.10m", jump2: "128.50m", pts: "257.0", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "TOMASZ POZNAŃSKI", jump1: "127.20m", jump2: "126.80m", pts: "251.5", isPlayer: true, note: "PODIUM" },
+        { rank: 3, name: "ERIK NORDQVIST", jump1: "125.40m", jump2: "125.10m", pts: "247.3", isPlayer: false, note: "PODIUM" }
+      ],
+      2024: [
+        { rank: 1, name: "LUKAS BERGSTRÖM", jump1: "126.90m", jump2: "127.30m", pts: "253.8", isPlayer: false, note: "MISTRZ" },
+        { rank: 2, name: "JANUSZ WIELKOPOLSKI", jump1: "125.80m", jump2: "125.20m", pts: "248.9", isPlayer: false, note: "PODIUM" }
+      ],
+      2023: [
+        { rank: 1, name: "ERIK NORDQVIST", jump1: "126.40m", jump2: "126.70m", pts: "251.6", isPlayer: false, note: "MISTRZ" }
+      ],
+      2022: [
+        { rank: 1, name: "FINN MÄKINEN", jump1: "126.00m", jump2: "125.80m", pts: "249.5", isPlayer: false, note: "MISTRZ" }
+      ],
+      2021: [
+        { rank: 1, name: "TOMASZ POZNAŃSKI", jump1: "127.30m", jump2: "127.50m", pts: "254.1", isPlayer: true, note: "MISTRZ" }
+      ],
+      2020: [
+        { rank: 1, name: "MARKUS WEISS", jump1: "125.90m", jump2: "126.10m", pts: "249.8", isPlayer: false, note: "MISTRZ" }
+      ],
+      2019: [
+        { rank: 1, name: "ERIK NORDQVIST", jump1: "126.80m", jump2: "127.10m", pts: "252.4", isPlayer: false, note: "MISTRZ" }
+      ]
+    };
+
+    let currentSeason = '2025/2026';
+    let currentComp = 'general';
+
     function switchTab(tabId) {
       document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
@@ -745,111 +1053,372 @@
       if (targetNav) targetNav.classList.add('active');
     }
 
-    // Dummy Jumpers Data for Seasons 2019-2026
-    const seasonResults = {
-      2026: [
-        { rank: 1, name: "TOMASZ POZNAŃSKI", jump1: "128.42m", jump2: "127.80m", pts: "256.4", isPlayer: true, note: "LIDER" },
-        { rank: 2, name: "ERIK NORDQVIST", jump1: "127.15m", jump2: "126.90m", pts: "252.1", isPlayer: false, note: "PODIUM" },
-        { rank: 3, name: "JANUSZ WIELKOPOLSKI", jump1: "126.30m", jump2: "125.75m", pts: "248.6", isPlayer: false, note: "PODIUM" },
-        { rank: 4, name: "LUKAS BERGSTRÖM", jump1: "124.50m", jump2: "124.20m", pts: "243.2", isPlayer: false, note: "FINAŁ" },
-        { rank: 5, name: "MATEUSZ BELKA", jump1: "123.80m", jump2: "122.90m", pts: "239.5", isPlayer: false, note: "FINAŁ" },
-        { rank: 6, name: "MARKUS WEISS", jump1: "122.40m", jump2: "121.80m", pts: "235.0", isPlayer: false, note: "FINAŁ" },
-        { rank: 7, name: "KRZYSZTOF TELEMARK", jump1: "121.90m", jump2: "122.50m", pts: "233.8", isPlayer: false, note: "FINAŁ" },
-        { rank: 8, name: "FINN MÄKINEN", jump1: "119.30m", jump2: "118.40m", pts: "226.7", isPlayer: false, note: "FINAŁ" },
-        { rank: 9, name: "OLAF TANDREVOLD", jump1: "116.20m", jump2: "115.80m", pts: "218.4", isPlayer: false, note: "FINAŁ" }
-      ],
-      2025: [
-        { rank: 1, name: "JANUSZ WIELKOPOLSKI", jump1: "128.10m", jump2: "128.50m", pts: "257.0", isPlayer: false, note: "MISTRZ" },
-        { rank: 2, name: "TOMASZ POZNAŃSKI", jump1: "127.20m", jump2: "126.80m", pts: "251.5", isPlayer: true, note: "PODIUM" },
-        { rank: 3, name: "ERIK NORDQVIST", jump1: "125.40m", jump2: "125.10m", pts: "247.3", isPlayer: false, note: "PODIUM" },
-        { rank: 4, name: "DAISUKE TANAKA", jump1: "123.90m", jump2: "123.40m", pts: "242.0", isPlayer: false, note: "FINAŁ" },
-        { rank: 5, name: "WOJCIECH ZAWIEC", jump1: "121.50m", jump2: "120.90m", pts: "235.8", isPlayer: false, note: "FINAŁ" }
-      ],
-      2024: [
-        { rank: 1, name: "LUKAS BERGSTRÖM", jump1: "126.90m", jump2: "127.30m", pts: "253.8", isPlayer: false, note: "MISTRZ" },
-        { rank: 2, name: "JANUSZ WIELKOPOLSKI", jump1: "125.80m", jump2: "125.20m", pts: "248.9", isPlayer: false, note: "PODIUM" },
-        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "124.60m", jump2: "124.90m", pts: "245.7", isPlayer: true, note: "PODIUM" },
-        { rank: 4, name: "MARKUS WEISS", jump1: "122.30m", jump2: "121.80m", pts: "238.1", isPlayer: false, note: "FINAŁ" }
-      ],
-      2023: [
-        { rank: 1, name: "ERIK NORDQVIST", jump1: "126.40m", jump2: "126.70m", pts: "251.6", isPlayer: false, note: "MISTRZ" },
-        { rank: 2, name: "MATEUSZ BELKA", jump1: "124.90m", jump2: "125.00m", pts: "246.8", isPlayer: false, note: "PODIUM" },
-        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "123.50m", jump2: "123.90m", pts: "241.4", isPlayer: true, note: "PODIUM" }
-      ],
-      2022: [
-        { rank: 1, name: "FINN MÄKINEN", jump1: "126.00m", jump2: "125.80m", pts: "249.5", isPlayer: false, note: "MISTRZ" },
-        { rank: 2, name: "ERIK NORDQVIST", jump1: "124.70m", jump2: "125.10m", pts: "246.2", isPlayer: false, note: "PODIUM" },
-        { rank: 3, name: "JANUSZ WIELKOPOLSKI", jump1: "122.80m", jump2: "123.10m", pts: "239.0", isPlayer: false, note: "FINAŁ" }
-      ],
-      2021: [
-        { rank: 1, name: "TOMASZ POZNAŃSKI", jump1: "127.30m", jump2: "127.50m", pts: "254.1", isPlayer: true, note: "MISTRZ" },
-        { rank: 2, name: "LUKAS BERGSTRÖM", jump1: "124.80m", jump2: "124.20m", pts: "245.0", isPlayer: false, note: "PODIUM" },
-        { rank: 3, name: "DAISUKE TANAKA", jump1: "122.10m", jump2: "122.40m", pts: "237.9", isPlayer: false, note: "FINAŁ" }
-      ],
-      2020: [
-        { rank: 1, name: "MARKUS WEISS", jump1: "125.90m", jump2: "126.10m", pts: "249.8", isPlayer: false, note: "MISTRZ" },
-        { rank: 2, name: "JANUSZ WIELKOPOLSKI", jump1: "124.20m", jump2: "124.50m", pts: "244.9", isPlayer: false, note: "PODIUM" },
-        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "121.40m", jump2: "121.80m", pts: "236.7", isPlayer: true, note: "FINAŁ" }
-      ],
-      2019: [
-        { rank: 1, name: "ERIK NORDQVIST", jump1: "126.80m", jump2: "127.10m", pts: "252.4", isPlayer: false, note: "MISTRZ" },
-        { rank: 2, name: "FINN MÄKINEN", jump1: "123.50m", jump2: "123.80m", pts: "242.7", isPlayer: false, note: "PODIUM" },
-        { rank: 3, name: "TOMASZ POZNAŃSKI", jump1: "119.80m", jump2: "120.40m", pts: "231.2", isPlayer: true, note: "DEBIUT" }
-      ]
-    };
-
-    let currentSeason = 2026;
-
-    function renderResults(season, filterText = '') {
-      const tbody = document.getElementById('results-tbody');
-      tbody.innerHTML = '';
-      const list = seasonResults[season] || seasonResults[2026];
-
-      const filtered = list.filter(item => 
-        item.name.toLowerCase().includes(filterText.toLowerCase())
-      );
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--dsj-yellow-dim); padding: 20px;">BRAK WYNIKÓW DLA PODANEGO ZAWODNIKA</td></tr>`;
-        return;
-      }
-
-      filtered.forEach(row => {
-        const tr = document.createElement('tr');
-        if (row.isPlayer) tr.classList.add('highlight');
-        tr.innerHTML = `
-          <td>${row.rank}.</td>
-          <td>${row.name}</td>
-          <td>${row.jump1}</td>
-          <td>${row.jump2}</td>
-          <td>${row.pts}</td>
-          <td>${row.note}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function selectSeason(year) {
-      currentSeason = year;
+    function selectSeason(season) {
+      currentSeason = String(season);
       switchTab('wyniki');
 
-      document.getElementById('active-season-title').textContent = `SEZON ${year}`;
+      const titleEl = document.getElementById('active-season-title');
+      const badgeEl = document.getElementById('active-hill-badge');
+      const compControls = document.getElementById('comp-controls');
+
+      if (currentSeason === '2025/2026' || currentSeason === '2026') {
+        currentSeason = '2025/2026';
+        titleEl.textContent = 'SEZON 2025/2026';
+        badgeEl.textContent = '18 KONKURSÓW + TCS + IO';
+        compControls.style.display = 'flex';
+      } else {
+        titleEl.textContent = `SEZON ${currentSeason}`;
+        badgeEl.textContent = 'ARCHIWUM';
+        compControls.style.display = 'none';
+      }
 
       document.querySelectorAll('.season-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim() === String(year));
+        const txt = btn.textContent.trim();
+        btn.classList.toggle('active', txt === currentSeason || (currentSeason === '2025/2026' && txt === '2025/2026'));
       });
 
-      renderResults(year, document.getElementById('jumper-search').value);
+      renderView();
+    }
+
+    function selectComp(compId) {
+      currentComp = String(compId);
+      document.querySelectorAll('.comp-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick') || '';
+        btn.classList.toggle('active', onclickAttr.includes(`'${currentComp}'`) || onclickAttr.includes(`(${currentComp})`) );
+      });
+      renderView();
     }
 
     function filterJumpers() {
-      const val = document.getElementById('jumper-search').value;
-      renderResults(currentSeason, val);
+      renderView();
+    }
+
+    function renderView() {
+      const container = document.getElementById('results-display-area');
+      const searchVal = (document.getElementById('jumper-search').value || '').trim().toLowerCase();
+
+      if (currentSeason !== '2025/2026') {
+        // Legacy dummy table
+        const rows = legacySeasonResults[currentSeason] || [];
+        const filtered = rows.filter(r => r.name.toLowerCase().includes(searchVal));
+
+        let trs = '';
+        if (filtered.length === 0) {
+          trs = '<tr><td colspan="6" style="text-align:center; padding:20px;">BRAK WYNIKÓW</td></tr>';
+        } else {
+          filtered.forEach(r => {
+            trs += `<tr>
+              <td>${r.rank}.</td>
+              <td>${r.name}</td>
+              <td>${r.jump1}</td>
+              <td>${r.jump2}</td>
+              <td>${r.pts}</td>
+              <td>${r.note}</td>
+            </tr>`;
+          });
+        }
+
+        container.innerHTML = `
+          <div class="scoreboard-table-wrap">
+            <table class="retro-table">
+              <thead>
+                <tr>
+                  <th>MIEJSCE</th>
+                  <th>ZAWODNIK</th>
+                  <th>1. SKOK</th>
+                  <th>2. SKOK</th>
+                  <th>PUNKTY</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody>${trs}</tbody>
+            </table>
+          </div>`;
+        return;
+      }
+
+      // --- SEASON 2025/2026 ---
+      if (currentComp === 'general') {
+        renderGeneralStandings(container, searchVal);
+      } else if (currentComp === 'all') {
+        renderAllCompetitions(container, searchVal);
+      } else if (currentComp === 'tcs') {
+        renderTcsTable(container, searchVal);
+      } else if (currentComp === 'io') {
+        renderIoTable(container, searchVal);
+      } else {
+        const cId = parseInt(currentComp);
+        const comp = season2526Data.competitions.find(c => c.id === cId);
+        if (comp) {
+          container.innerHTML = renderSingleCompHtml(comp, searchVal);
+        }
+      }
+    }
+
+    function renderGeneralStandings(container, filterText) {
+      const list = season2526Data.general.filter(j => j.name.toLowerCase().includes(filterText));
+      
+      let tbody = '';
+      list.forEach(j => {
+        const isGold = j.rank === '1.';
+        const isPodium = j.rank === '2.' || j.rank === '3.';
+        const cls = isGold ? 'gold' : (isPodium ? 'highlight' : '');
+        tbody += `
+          <tr class="${cls}">
+            <td>${j.rank}</td>
+            <td><strong>${j.name}</strong></td>
+            <td><strong style="color:var(--dsj-yellow);">${j.top13}</strong></td>
+            <td>${j.total}</td>
+            <td>${j.loss}</td>
+            <td>${j.wins}</td>
+            <td>${j.second}</td>
+            <td>${j.third}</td>
+            <td>${j.starts}</td>
+          </tr>`;
+      });
+
+      container.innerHTML = `
+        <div class="comp-card-header" style="margin-bottom: 8px;">
+          <span class="comp-card-title">🏆 OFICJALNA KLASYFIKACJA GENERALNA NTWDSJ2.1 #7</span>
+          <span class="comp-card-date">ZASADA TOP13* | 18 KONKURSÓW</span>
+        </div>
+        <div class="scoreboard-table-wrap">
+          <table class="retro-table">
+            <thead>
+              <tr>
+                <th>MIEJSCE</th>
+                <th>ZAWODNIK</th>
+                <th>TOP 13*</th>
+                <th>SUMA</th>
+                <th>STRATA</th>
+                <th>1. MIEJSCA</th>
+                <th>2. MIEJSCA</th>
+                <th>3. MIEJSCA</th>
+                <th>STARTY</th>
+              </tr>
+            </thead>
+            <tbody>${tbody}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function renderSingleCompHtml(comp, filterText) {
+      const standings = comp.standings.filter(s => s.name.toLowerCase().includes(filterText));
+
+      let trs = '';
+      if (standings.length === 0) {
+        trs = '<tr><td colspan="7" style="text-align:center; padding:16px;">Brak skoczków spełniających kryteria</td></tr>';
+      } else {
+        standings.forEach(s => {
+          const isGold = s.rank === '1.';
+          const isPodium = s.rank === '2.' || s.rank === '3.';
+          const cls = isGold ? 'gold' : (isPodium ? 'highlight' : '');
+          trs += `
+            <tr class="${cls}">
+              <td>${s.rank}</td>
+              <td><strong>${s.name}</strong></td>
+              <td>${s.points}</td>
+              <td>${s.h1}</td>
+              <td>${s.h2}</td>
+              <td>${s.h3}</td>
+              <td><strong style="color:var(--dsj-cyan);">+${s.cup_pts}</strong></td>
+            </tr>`;
+        });
+      }
+
+      let recHtml = '';
+      if (comp.records && comp.records.length > 0) {
+        recHtml = `
+          <div class="record-alert">
+            <span>🏆 NOWY REKORD: <strong>${comp.records.join(', ')}</strong></span>
+          </div>`;
+      }
+
+      let hillsTrs = '';
+      comp.hills.forEach(h => {
+        hillsTrs += `
+          <tr>
+            <td><strong>${h.hill}</strong></td>
+            <td style="color:var(--dsj-yellow-bright);">${h.pos1}</td>
+            <td>${h.pos2}</td>
+            <td>${h.pos3}</td>
+          </tr>`;
+      });
+
+      return `
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <span class="comp-card-title">🎿 ${comp.name}</span>
+            <span class="comp-card-date">DATA: ${comp.date || '-'}</span>
+          </div>
+
+          ${recHtml}
+
+          <div class="scoreboard-table-wrap" style="margin-bottom:12px;">
+            <table class="retro-table">
+              <thead>
+                <tr>
+                  <th>MIEJSCE</th>
+                  <th>ZAWODNIK</th>
+                  <th>PUNKTY</th>
+                  <th>1. SERIE</th>
+                  <th>2. SERIE</th>
+                  <th>3. SERIE</th>
+                  <th>PKT DO GEN.</th>
+                </tr>
+              </thead>
+              <tbody>${trs}</tbody>
+            </table>
+          </div>
+
+          <div class="hills-title">SKOCZNIE W KONKURSIE I PODIA:</div>
+          <div class="scoreboard-table-wrap">
+            <table class="retro-table">
+              <thead>
+                <tr>
+                  <th>SKOCZNIA</th>
+                  <th>1. MIEJSCE</th>
+                  <th>2. MIEJSCE</th>
+                  <th>3. MIEJSCE</th>
+                </tr>
+              </thead>
+              <tbody>${hillsTrs}</tbody>
+            </table>
+          </div>
+        </div>`;
+    }
+
+    function renderAllCompetitions(container, filterText) {
+      let html = '<div style="display:flex; flex-direction:column; gap:20px;">';
+      season2526Data.competitions.forEach(comp => {
+        html += renderSingleCompHtml(comp, filterText);
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function renderTcsTable(container, filterText) {
+      const list = season2526Data.tcs.filter(j => j.name.toLowerCase().includes(filterText));
+      let trs = '';
+      list.forEach(j => {
+        const isGold = j.rank === '1.';
+        const cls = isGold ? 'gold' : '';
+        trs += `
+          <tr class="${cls}">
+            <td>${j.rank}</td>
+            <td><strong>${j.name}</strong></td>
+            <td>${j.h1}</td>
+            <td>${j.h2}</td>
+            <td>${j.h3}</td>
+            <td>${j.h4}</td>
+            <td><strong style="color:var(--dsj-yellow-bright);">${j.total}</strong></td>
+            <td>${j.loss}</td>
+          </tr>`;
+      });
+
+      container.innerHTML = `
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <span class="comp-card-title">🦅 TURNIEJ CZTERECH SKOCZNI (TCS)</span>
+            <span class="comp-card-date">08.01.2026 | 4 SKOCZNIE</span>
+          </div>
+          <div class="scoreboard-table-wrap">
+            <table class="retro-table">
+              <thead>
+                <tr>
+                  <th>MIEJSCE</th>
+                  <th>ZAWODNIK</th>
+                  <th>FINLANDIA K105</th>
+                  <th>AUSTRIA K70</th>
+                  <th>NIEMCY K120</th>
+                  <th>NORWEGIA K90</th>
+                  <th>ŁĄCZNIE</th>
+                  <th>STRATA</th>
+                </tr>
+              </thead>
+              <tbody>${trs}</tbody>
+            </table>
+          </div>
+        </div>`;
+    }
+
+    function renderIoTable(container, filterText) {
+      const normalList = season2526Data.io_normal.filter(j => j.name.toLowerCase().includes(filterText));
+      const largeList = season2526Data.io_large.filter(j => j.name.toLowerCase().includes(filterText));
+
+      let normalTrs = '';
+      normalList.forEach(j => {
+        const isGold = j.rank === '1.';
+        normalTrs += `
+          <tr class="${isGold ? 'gold' : ''}">
+            <td>${j.rank}</td>
+            <td><strong>${j.name}</strong></td>
+            <td>${j.points}</td>
+            <td>${j.h1}</td>
+            <td>${j.h2}</td>
+            <td>${j.h3}</td>
+          </tr>`;
+      });
+
+      let largeTrs = '';
+      largeList.forEach(j => {
+        const isGold = j.rank === '1.';
+        largeTrs += `
+          <tr class="${isGold ? 'gold' : ''}">
+            <td>${j.rank}</td>
+            <td><strong>${j.name}</strong></td>
+            <td>${j.h1}</td>
+            <td>${j.h2}</td>
+            <td>${j.h3}</td>
+          </tr>`;
+      });
+
+      container.innerHTML = `
+        <div class="comp-card">
+          <div class="comp-card-header">
+            <span class="comp-card-title">🥇 IGRZYSKA OLIMPIJSKIE - SKOCZNIA NORMALNA</span>
+            <span class="comp-card-date">12.02.2026</span>
+          </div>
+          <div class="scoreboard-table-wrap">
+            <table class="retro-table">
+              <thead>
+                <tr>
+                  <th>MIEJSCE</th>
+                  <th>ZAWODNIK</th>
+                  <th>PUNKTY</th>
+                  <th>1. SERIE</th>
+                  <th>2. SERIE</th>
+                  <th>3. SERIE</th>
+                </tr>
+              </thead>
+              <tbody>${normalTrs}</tbody>
+            </table>
+          </div>
+
+          <div class="comp-card-header" style="margin-top:16px;">
+            <span class="comp-card-title">🥇 IGRZYSKA OLIMPIJSKIE - SKOCZNIA DUŻA</span>
+            <span class="comp-card-date">12.02.2026</span>
+          </div>
+          <div class="scoreboard-table-wrap">
+            <table class="retro-table">
+              <thead>
+                <tr>
+                  <th>MIEJSCE</th>
+                  <th>ZAWODNIK</th>
+                  <th>1. SERIE</th>
+                  <th>2. SERIE</th>
+                  <th>3. SERIE</th>
+                </tr>
+              </thead>
+              <tbody>${largeTrs}</tbody>
+            </table>
+          </div>
+        </div>`;
     }
 
     // Initial render
     window.addEventListener('DOMContentLoaded', () => {
-      renderResults(2026);
+      selectSeason('2025/2026');
     });
   </script>
 </body>
